@@ -1,0 +1,13 @@
+.container-100 {
+	width: 95%;
+	padding-right: 10px;
+	padding-left: 10px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.style10 {
+	border-top: 1px dotted #8c8b8b;
+	border-bottom: 1px dotted #fff;
+	width: 30% !important;
+}
