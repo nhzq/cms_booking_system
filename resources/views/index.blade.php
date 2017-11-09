@@ -8,13 +8,13 @@
             <div class="col-lg-10 mx-auto">
                 <h1 class="text-uppercase">
                     <!-- Headline/motto company -->
-                    <strong>Your Favorite Source of Free Bootstrap Themes</strong>
+                    <strong>{{ $post->headline }}</strong>
                 </h1>
                 <hr>
             </div>
             <div class="col-lg-8 mx-auto">
                 <!-- Explain a bit about company motto/headline -->
-                <p class="text-faded mb-5">Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
+                <p class="text-faded mb-5">{{ $post->headline_brief }}</p>
                 <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
             </div>
         </div>
@@ -28,7 +28,7 @@
                 <h2 class="section-heading text-white">We've got what you need!</h2>
                 <hr class="light my-4">
                 <!-- Explain a bit about company's services -->
-                <p class="text-faded mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
+                <p class="text-faded mb-4">{{ $post->services_brief }}</p>
                 <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
             </div>
         </div>
@@ -50,32 +50,32 @@
                 <div class="service-box mt-5 mx-auto">
                     <i class="fa fa-4x fa-diamond text-primary mb-3 sr-icons"></i>
                     <!-- Company expertise -->
-                    <h3 class="mb-3">Sturdy Templates</h3>
-                    <p class="text-muted mb-0">Our templates are updated regularly so they don't break.</p>
+                    {{-- <h3 class="mb-3">Sturdy Templates</h3> --}}
+                    <p class="text-muted mb-0">{{ $post->service_1 }}</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="service-box mt-5 mx-auto">
                     <i class="fa fa-4x fa-paper-plane text-primary mb-3 sr-icons"></i>
                     <!-- Company expertise -->
-                    <h3 class="mb-3">Ready to Ship</h3>
-                    <p class="text-muted mb-0">You can use this theme as is, or you can make changes!</p>
+                    {{-- <h3 class="mb-3">Ready to Ship</h3> --}}
+                    <p class="text-muted mb-0">{{ $post->service_2 }}</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="service-box mt-5 mx-auto">
                     <i class="fa fa-4x fa-newspaper-o text-primary mb-3 sr-icons"></i>
                     <!-- Company expertise -->
-                    <h3 class="mb-3">Up to Date</h3>
-                    <p class="text-muted mb-0">We update dependencies to keep things fresh.</p>
+                    {{-- <h3 class="mb-3">Up to Date</h3> --}}
+                    <p class="text-muted mb-0">{{ $post->service_3 }}</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="service-box mt-5 mx-auto">
                     <i class="fa fa-4x fa-heart text-primary mb-3 sr-icons"></i>
                     <!-- Company expertise -->
-                    <h3 class="mb-3">Made with Love</h3>
-                    <p class="text-muted mb-0">You have to make your websites with love these days!</p>
+                    {{-- <h3 class="mb-3">Made with Love</h3> --}}
+                    <p class="text-muted mb-0">{{ $post->service_4 }}</p>
                 </div>
             </div>
         </div>
@@ -102,12 +102,12 @@
     <div class="row">
         <div class="col-lg-4 ml-auto text-center">
             <i class="fa fa-phone fa-3x mb-3 sr-contact"></i>
-            <p>123-456-6789</p>
+            <p>{{ $post->phone }}</p>
         </div>
         <div class="col-lg-4 mr-auto text-center">
             <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
             <p>
-                <a href="mailto:your-email@your-domain.com">feedback@startbootstrap.com</a>
+                <a href="mailto:your-email@your-domain.com">{{ $post->email }}</a>
             </p>
         </div>
     </div>

@@ -23,8 +23,14 @@
     <!-- Morris Charts CSS -->
     <link href="{{ asset('vendor-admin/morrisjs/morris.css') }}" rel="stylesheet">
 
+    <!-- Toastr -->
+    <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="{{ asset('vendor-admin/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+
+    <!-- Custom style -->
+    <link href="{{ asset('style.css') }}" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -102,7 +108,19 @@
                             <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="{{ route('homepage.create') }}"><i class="fa fa-bar-chart-o fa-fw"></i> Homepage</a>
+                            <a href="{{ route('homepage.index') }}"><i class="fa fa-bar-chart-o fa-fw"></i> Homepage<span class="fa arrow"></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ route('homepage.index') }}">List</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('homepage.create') }}">Create</a>
+                                </li>
+                                <li>
+                                    {{-- <a href="{{ route('homepage.update') }}">Update</a> --}}
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
                         </li>
                         <li>
                             <a href="tables.html"><i class="fa fa-table fa-fw"></i> About Us</a>
@@ -152,6 +170,30 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('dist/js/sb-admin-2.js') }}"></script>
+
+    <!--Toastr -->
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
+
+    <script>
+
+        @if(Session::has('success'))
+            toastr.success("{{ Session::get('success') }}");
+        @endif
+
+        $(document).on('click', '.panel-heading span.clickable', function(e){
+            var $this = $(this);
+            if(!$this.hasClass('panel-collapsed')) {
+                $this.parents('.panel').find('.panel-body').slideUp();
+                $this.addClass('panel-collapsed');
+                $this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+            } else {
+                $this.parents('.panel').find('.panel-body').slideDown();
+                $this.removeClass('panel-collapsed');
+                $this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+            }
+        });
+
+    </script>
 
 </body>
 

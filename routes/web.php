@@ -11,9 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+
+/*
+|---------------------------
+| FrontEnd features
+|---------------------------
+*/
+// Route::get('/', function () {
+//     return view('index');
+// });
+Route::get('/', [
+	'uses' => 'FrontEndController@index',
+	'as' => 'frontend.index'
+]);
+
+
+
 
 Auth::routes();
 
@@ -21,7 +34,17 @@ Route::get('/adminpanel', 'HomeController@index');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
-	//Homepage features
+	/*
+	|---------------------------
+	| Homepage features
+	|---------------------------
+	*/
+
+	Route::get('/homepage', [
+	    'uses' => 'HomepageController@index',
+	    'as' => 'homepage.index'
+	]);
+
 	Route::get('/homepage/create', [
 	    'uses' => 'HomepageController@create',
 	    'as' => 'homepage.create'
@@ -32,5 +55,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 	    'as' => 'homepage.store'
 	]);
 
+	Route::get('/homepage/edit/{id}', [
+	    'uses' => 'HomepageController@edit',
+	    'as' => 'homepage.edit'
+	]);
+
+	Route::post('homepage/update/{id}', [
+		'uses' => 'HomepageController@update',
+		'as' => 'homepage.update'
+	]);
+
 });
+
+
 
