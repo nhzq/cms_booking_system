@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Homepage;
-use App\About;
+use App\Service;
+use Session;
 
-class FrontEndController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,16 +15,9 @@ class FrontEndController extends Controller
      */
     public function index()
     {
-        return view('index')->with('post', Homepage::first());
+        return view('admin.service.index')->with('service', Service::all());
     }
 
-    public function about()
-    {
-        return view('about')
-            ->with('post', Homepage::first())
-            ->with('about', About::first());
-    }
-    
     /**
      * Show the form for creating a new resource.
      *
@@ -32,7 +25,14 @@ class FrontEndController extends Controller
      */
     public function create()
     {
-        //
+        $service = Service::all();
+
+        if($service->count() > 0) {
+            Session::flash('info', "You already have a post. Please edit and update the post instead of creating a new post");
+
+            return redirect()->route('service.index');
+        }
+        return view('admin.service.create');
     }
 
     /**
@@ -43,7 +43,19 @@ class FrontEndController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'intro' => 'required',
+            'body' => 'required'
+        ]);
+
+        $service = Service::create([
+            'intro' => $request->intro,
+            'body' => $request->body
+        ]);
+
+        Session::flash('success', "You have successfully saved the details");
+
+        return redirect()->back();
     }
 
     /**
@@ -65,7 +77,9 @@ class FrontEndController extends Controller
      */
     public function edit($id)
     {
-        //
+        $service = Service::find($id);
+
+        return view('admin.service.edit')->with('service', $service);
     }
 
     /**
@@ -77,7 +91,20 @@ class FrontEndController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'intro' => 'required',
+            'body' => 'required'
+        ]);
+
+        $service = Service::find($id);
+
+        $service->intro = $request->intro;
+        $service->body = $request->body;
+        $service->save();
+
+        Session::flash('success', "Details have been successfully updated");
+
+        return redirect()->route('service.index');
     }
 
     /**

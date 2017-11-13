@@ -46,6 +46,10 @@
         ]); ?>
     </script>
 
+    @php
+        $post = App\Homepage::first();
+    @endphp
+
 </head>
 
 <body>
@@ -61,7 +65,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Nama company</a>
+                <a class="navbar-brand" href="index.html">{{ $post->company_name }}</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -105,14 +109,15 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href=""><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="{{ route('homepage.index') }}"><i class="fa fa-bar-chart-o fa-fw"></i> Homepage<span class="fa arrow"></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Homepage<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{ route('homepage.index') }}">List</a>
                                 </li>
+
                                 <li>
                                     <a href="{{ route('homepage.create') }}">Create</a>
                                 </li>
@@ -123,10 +128,36 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> About Us</a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> About us<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ route('about.index') }}">List</a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('about.create') }}">Create</a>
+                                </li>
+                                <li>
+                                    {{-- <a href="{{ route('homepage.update') }}">Update</a> --}}
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Our Services</a>
+                            <a href="#"><i class="fa fa-edit fa-fw"></i> Our Services<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ route('service.index') }}">List</a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('service.create') }}">Create</a>
+                                </li>
+                                <li>
+                                    {{-- <a href="{{ route('homepage.update') }}">Update</a> --}}
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Training</a>
@@ -178,6 +209,10 @@
 
         @if(Session::has('success'))
             toastr.success("{{ Session::get('success') }}");
+        @endif
+
+        @if(Session::has('info'))
+            toastr.info("{{ Session::get('info') }}");
         @endif
 
         $(document).on('click', '.panel-heading span.clickable', function(e){

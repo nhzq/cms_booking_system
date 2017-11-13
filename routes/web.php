@@ -25,12 +25,17 @@ Route::get('/', [
 	'as' => 'frontend.index'
 ]);
 
+Route::get('/about', [
+	'uses' => 'FrontEndController@about',
+	'as' => 'frontend.about'
+]);
+
 
 
 
 Auth::routes();
 
-Route::get('/adminpanel', 'HomeController@index');
+Route::get('/admin', 'HomeController@index');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
@@ -65,6 +70,67 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 		'as' => 'homepage.update'
 	]);
 
+	/*
+	|---------------------------
+	| About features
+	|---------------------------
+	*/
+
+	Route::get('/about-us', [
+		'uses' => 'AboutController@index',
+		'as' => 'about.index'
+	]);
+
+	Route::get('/about-us/create', [
+		'uses' => 'AboutController@create',
+		'as' => 'about.create'
+	]);
+
+	Route::post('/about-us/store', [
+		'uses' => 'AboutController@store',
+		'as' => 'about.store'
+	]);
+
+	Route::get('/about-us/edit/{id}', [
+		'uses' => 'AboutController@edit',
+		'as' => 'about.edit'
+	]);
+
+	Route::post('/about-us/update/{id}', [
+		'uses' => 'AboutController@update',
+		'as' => 'about.update'
+	]);
+
+	/*
+	|---------------------------
+	| service features
+	|---------------------------
+	*/
+
+	Route::get('/service', [
+		'uses' => 'ServiceController@index',
+		'as' => 'service.index'
+	]);
+
+	Route::get('/service/create', [
+		'uses' => 'ServiceController@create',
+		'as' => 'service.create'
+	]);
+
+	Route::post('/service/store', [
+		'uses' => 'ServiceController@store',
+		'as' => 'service.store'
+	]);
+
+	Route::get('/service/edit/{id}', [
+		'uses' => 'ServiceController@edit',
+		'as' => 'service.edit'
+	]);
+
+	Route::post('/service/update/{id}', [
+		'uses' => 'ServiceController@update',
+		'as' => 'service.update'
+	]);
 });
 
 

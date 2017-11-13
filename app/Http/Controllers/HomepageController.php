@@ -25,6 +25,14 @@ class HomepageController extends Controller
      */
     public function create()
     {
+        $post = Homepage::all();
+
+        if($post->count() > 0) {
+            Session::flash("info", "You already have a post. Please edit and update the post instead of creating a new post");
+
+            return redirect()->route('homepage.index');
+        }
+
         return view('admin.homepage.create');
     }
 
@@ -41,7 +49,7 @@ class HomepageController extends Controller
             'company_name' => 'required',
             'phone' => 'required',
             'email' => 'required',
-            'header_image' => 'required|image',
+            // 'header_image' => 'required|image',
             'service_1' => 'required',
             'service_2' => 'required',
             'service_3' => 'required',
@@ -51,15 +59,15 @@ class HomepageController extends Controller
             'services_brief' => 'required'
         ]);
 
-        $header_image = $request->header_image;
-        $image_name = time() . $header_image->getClientOriginalName();
-        $header_image->move('img/homeImage', $image_name);
+        // $header_image = $request->header_image;
+        // $image_name = time() . $header_image->getClientOriginalName();
+        // $header_image->move('img/homeImage', $image_name);
 
         $homepage = Homepage::create([
             'company_name' => $request->company_name,
             'phone' => $request->phone,
             'email' => $request->email,
-            'header_image' => 'img/homeImage/' . $image_name,
+            // 'header_image' => 'img/homeImage/' . $image_name,
             'service_1' => $request->service_1,
             'service_2' => $request->service_2,
             'service_3' => $request->service_3,
@@ -113,7 +121,7 @@ class HomepageController extends Controller
             'company_name' => 'required',
             'phone' => 'required',
             'email' => 'required',
-            'header_image' => 'required|image',
+            // 'header_image' => 'required|image',
             'service_1' => 'required',
             'service_2' => 'required',
             'service_3' => 'required',
@@ -123,20 +131,20 @@ class HomepageController extends Controller
             'services_brief' => 'required'
         ]);
 
-        if($request->hasFile('header_image')) {
+        // if($request->hasFile('header_image')) {
 
-            //Get item
-            $header_image = $request->header_image;
+        //     //Get item
+        //     $header_image = $request->header_image;
 
-            //Give name to the item
-            $image_name = time() . $header_image->getClientOriginalName();
+        //     //Give name to the item
+        //     $image_name = time() . $header_image->getClientOriginalName();
 
-            //Move to the item to specified folder
-            $header_image->move('img/homeImage', $image_name);
+        //     //Move to the item to specified folder
+        //     $header_image->move('img/homeImage', $image_name);
 
-            //Get the item with new name
-            $homepage->header_image = $image_name;
-        }
+        //     //Get the item with new name
+        //     $homepage->header_image = $image_name;
+        // }
 
         $homepage->company_name = $request->company_name;
         $homepage->phone = $request->phone;

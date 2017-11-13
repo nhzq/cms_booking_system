@@ -4,6 +4,7 @@
 	
 	<div class="container">
 		<form action="{{ route('homepage.store') }}" method="post" enctype="multipart/form-data">
+			
 			{{ csrf_field() }}
 
 			<div class="col-md-8" style="margin-top: 30px !important;">
@@ -36,6 +37,21 @@
 
 				</div>
 			</div>
+
+			<!-- Error -->
+			@if(count($errors) > 0)
+
+				<div class="col-md-4" style="margin-top: 30px !important;">
+					<ul class="list-group">
+						@foreach($errors->all() as $error)
+							<li class="list-group-item text-danger">
+								{{ $error }}
+							</li>
+						@endforeach			
+					</ul>
+				</div>
+
+			@endif
 
 			<div class="col-md-8">
 				<div class="panel panel-primary">
@@ -126,20 +142,7 @@
 				</button>
 			</div>
 
-			<!-- Error -->
-			@if(count($errors) > 0)
-
-				<div class="col-md-4">
-					<ul class="list-group">
-						@foreach($errors->all() as $error)
-							<li class="list-group-item text-danger">
-								{{ $error }}
-							</li>
-						@endforeach			
-					</ul>
-				</div>
-
-			@endif
+			
 
 		</form>
     </div>

@@ -1,25 +1,84 @@
+<style>
+/*!
+ * Start Bootstrap - Full Slider (https://startbootstrap.com/template-overviews/full-slider)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-full-slider/blob/master/LICENSE)
+ */
+
+.carousel-item {
+  height: 100vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+</style>
+
 @extends('layouts.landing-page')
 
 @section('content')
 
-    <header class="masthead text-center text-white d-flex" style="background-image: url('{{ asset("img/homeImage/header.jpg")}}')">
-    <div class="container my-auto">
-        <div class="row">
-            <div class="col-lg-10 mx-auto">
-                <h1 class="text-uppercase">
-                    <!-- Headline/motto company -->
-                    <strong>{{ $post->headline }}</strong>
-                </h1>
-                <hr>
+    <header>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <!-- Slide One - Set the background image for this slide in the line below -->
+                <div class="carousel-item active" style="background-image: url('{{ asset("img/homeImage/header.jpg")}}')">
+                    <div class="carousel-caption d-none d-md-block" style="margin-bottom: 100px;">
+                        <h3>{{ $post->headline }}</h3>
+                        <p>{{ $post->headline_brief }}</p>
+                    </div>
+                </div>
+                <!-- Slide Two - Set the background image for this slide in the line below -->
+                <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+                    <div class="carousel-caption d-none d-md-block" style="margin-bottom: 100px;">
+                        <h3>Second Slide</h3>
+                        <p>This is a description for the second slide.</p>
+                    </div>
+                </div>
+                <!-- Slide Three - Set the background image for this slide in the line below -->
+                <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+                    <div class="carousel-caption d-none d-md-block" style="margin-bottom: 100px;">
+                        <h3>Third Slide</h3>
+                        <p>This is a description for the third slide.</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-8 mx-auto">
-                <!-- Explain a bit about company motto/headline -->
-                <p class="text-faded mb-5">{{ $post->headline_brief }}</p>
-                <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </header>
+
+    {{-- <header class="masthead text-center text-white d-flex" style="background-image: url('{{ asset("img/homeImage/header.jpg")}}')">
+        <div class="container my-auto">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h1 class="text-uppercase">
+                        <!-- Headline/motto company -->
+                        <strong>{{ $post->headline }}</strong>
+                    </h1>
+                    <hr>
+                </div>
+                <div class="col-lg-8 mx-auto">
+                    <!-- Explain a bit about company motto/headline -->
+                    <p class="text-faded mb-5">{{ $post->headline_brief }}</p>
+                    <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+                </div>
             </div>
         </div>
-    </div>
-    </header>
+    </header> --}}
 
     <section class="bg-primary" id="about">
     <div class="container">

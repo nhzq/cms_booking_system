@@ -132,10 +132,15 @@
 
 				</div>
 			</div>
+			
+			@foreach($homepage as $data)
 
-			<div class="col-md-8" style="margin-bottom: 30px !important;">
-				<a href="{{ route('homepage.edit', ['id' => $data->id]) }}" class="btn btn-success pull-right">Edit Post</a>
-			</div>
+				<div class="col-md-8" style="margin-bottom: 30px !important;">
+					<a href="{{ route('homepage.edit', ['id' => $data->id]) }}" class="btn btn-success pull-right">Edit Post</a>
+				</div>
+			
+			@endforeach
+
 
 		</div>
 
