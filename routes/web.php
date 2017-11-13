@@ -131,6 +131,58 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 		'uses' => 'ServiceController@update',
 		'as' => 'service.update'
 	]);
+
+
+	/*
+	|---------------------------
+	| news features
+	|---------------------------
+	*/
+
+	Route::get('/news', [
+		'uses' => 'NewsPostController@index',
+		'as' => 'news.index'
+	]);
+
+	Route::get('/news/create', [
+		'uses' => 'NewsPostController@create',
+		'as' => 'news.create'
+	]);
+
+	Route::post('/news/store', [
+		'uses' => 'NewsPostController@store',
+		'as' => 'news.store'
+	]);
+
+	Route::get('/news/edit/{id}', [
+		'uses' => 'NewsPostController@edit',
+		'as' => 'news.edit'
+	]);
+
+	Route::post('news/update/{id}', [
+		'uses' => 'NewsPostController@update',
+		'as' => 'news.update'
+	]);
+
+	Route::get('news/delete/{id}', [
+		'uses' => 'NewsPostController@destroy',
+		'as' => 'news.delete'
+	]);
+
+	Route::get('news/trashed', [
+		'uses' => 'NewsPostController@trashed',
+		'as' => 'news.trashed'
+	]);
+
+	Route::get('news/restore/{id}', [
+		'uses' => 'NewsPostController@restore',
+		'as' => 'news.restore'
+	]);
+
+	Route::get('news/kill/{id}', [
+		'uses' => 'NewsPostController@kill',
+		'as' => 'news.kill'
+	]);
 });
 
 

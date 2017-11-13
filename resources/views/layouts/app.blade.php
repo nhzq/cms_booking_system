@@ -109,7 +109,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href=""><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Homepage<span class="fa arrow"></span></a>
@@ -117,12 +117,8 @@
                                 <li>
                                     <a href="{{ route('homepage.index') }}">List</a>
                                 </li>
-
                                 <li>
                                     <a href="{{ route('homepage.create') }}">Create</a>
-                                </li>
-                                <li>
-                                    {{-- <a href="{{ route('homepage.update') }}">Update</a> --}}
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -133,12 +129,8 @@
                                 <li>
                                     <a href="{{ route('about.index') }}">List</a>
                                 </li>
-
                                 <li>
                                     <a href="{{ route('about.create') }}">Create</a>
-                                </li>
-                                <li>
-                                    {{-- <a href="{{ route('homepage.update') }}">Update</a> --}}
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -149,12 +141,8 @@
                                 <li>
                                     <a href="{{ route('service.index') }}">List</a>
                                 </li>
-
                                 <li>
                                     <a href="{{ route('service.create') }}">Create</a>
-                                </li>
-                                <li>
-                                    {{-- <a href="{{ route('homepage.update') }}">Update</a> --}}
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -163,7 +151,18 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Training</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> News</a>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> News<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ route('news.index') }}">List</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('news.create') }}">Create</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('news.trashed') }}">Trashed</a>
+                                </li>
+                            </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
