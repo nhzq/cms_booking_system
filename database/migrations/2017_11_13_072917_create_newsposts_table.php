@@ -15,8 +15,8 @@ class CreateNewspostsTable extends Migration
     {
         Schema::create('newsposts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('content');
+            $table->text('title');
+            $table->text('content');
             $table->string('image')->nullable();
             $table->string('slug');
             $table->softDeletes();

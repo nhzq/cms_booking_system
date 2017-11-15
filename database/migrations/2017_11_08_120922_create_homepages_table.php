@@ -17,9 +17,11 @@ class CreateHomepagesTable extends Migration
             $table->increments('id');
             $table->string('company_name');
             $table->string('header_image');
-            $table->string('headline');
-            $table->string('headline_brief');
-            $table->string('services_brief');
+            $table->string('header_image_2');
+            $table->string('header_image_3');
+            $table->text('headline');
+            $table->text('headline_brief');
+            $table->text('services_brief');
             $table->string('service_1');
             $table->string('service_2');
             $table->string('service_3');

@@ -39,6 +39,8 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    @yield('css')
+
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -203,6 +205,8 @@
 
     <!--Toastr -->
     <script src="{{ asset('js/toastr.min.js') }}"></script>
+
+    @yield('script')
 
     <script>
 

@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Overview</h2>
-                <hr class="my-4">
+                    <hr class="my-4">
                 </div>
             </div>
         </div>
@@ -22,8 +22,8 @@
 	                    <h2 class="section-heading">Vision</h2>
 	                <hr class="my-4">
 	                </div>
-                    <p class="text-center">
-                        {{ $about->vision }}
+                    <p>
+                        {!! $about->vision !!}
                     </p>
                 </div>
                 
@@ -35,8 +35,8 @@
 	                    <h2 class="section-heading">Mission</h2>
 	                <hr class="my-4">
 	                </div>
-                    <p class="text-center">
-                        {{ $about->mission }} 
+                    <p>
+                        {!! $about->mission !!} 
                     </p>
                 </div>
                 <div class="col-md-6 text-center" style="margin: auto 0;">
@@ -48,14 +48,12 @@
     <section class="bg-dark text-white">
         <div class="container text-center">
             <h2 class="mb-4">About Us!</h2>
-            <div class="row">
-                <div class="col-md-10 offset-1">
-                    <p class="text-justify">
-                        {{ $about->body }} 
-                    </p>
-                </div>
-            </div>     
         </div>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                {!! $about->body !!} 
+            </div>
+        </div>   
     </section>
 
 @endsection

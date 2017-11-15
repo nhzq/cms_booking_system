@@ -1,5 +1,37 @@
 @extends('layouts.app')
 
+@section('css')
+	
+	<style>
+
+		.btn-file {
+		    position: relative;
+		    overflow: hidden;
+		}
+		.btn-file input[type=file] {
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    min-width: 100%;
+		    min-height: 100%;
+		    font-size: 100px;
+		    text-align: right;
+		    filter: alpha(opacity=0);
+		    opacity: 0;
+		    outline: none;
+		    background: white;
+		    cursor: inherit;
+		    display: block;
+		}
+
+		#img-upload{
+		    width: 100%;
+		}
+
+	</style>
+
+@endsection
+
 @section('content')
 	
 	<div class="container">
@@ -32,6 +64,29 @@
 			    			<label for="headline_brief">Briefly explain about company motto/headline</label>
 			    			<textarea name="headline_brief" class="form-control" cols="3" rows="3">{{ $homepage->headline_brief }}</textarea>
 			    		</div>
+						
+						<div class="row">
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="header_image">Slide Image 1</label>
+									<input type="file" name="header_image" class="form-control">
+								</div>
+							</div>
+							
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="header_image_2">Slide Image 2</label>
+									<input type="file" name="header_image_2" class="form-control">
+								</div>
+							</div>
+
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="header_image_3">Slide Image 3</label>
+									<input type="file" name="header_image_3" class="form-control">
+								</div>
+							</div>
+						</div>
 
 					</div>
 

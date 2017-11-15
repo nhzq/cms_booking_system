@@ -9,6 +9,8 @@ class Homepage extends Model
     protected $fillable = [
     	'company_name', 
     	'header_image', 
+        'header_image_2',
+        'header_image_3',
     	'headline',
     	'headline_brief',
     	'services_brief',

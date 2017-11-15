@@ -43,7 +43,7 @@
 
 							<div class="col-md-12">
 								<p><span class="label label-info" style="font-size: 12px;">Body</span></p>
-								<div class="well well-sm">{{ $data->body }}</div>
+								<div class="well well-sm">{!! $data->body !!}</div>
 							</div>
 						
 						</div>

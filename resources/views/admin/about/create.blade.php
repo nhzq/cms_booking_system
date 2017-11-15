@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+<!--Summernote css-->
+@section('css')
+
+	<link href="{{ asset('vendor-admin/summernote/summernote.css') }}" rel="stylesheet">
+
+@endsection
+<!--End-->
+
 @section('content')
 	
 	<div class="container">
@@ -19,12 +27,12 @@
 
 						<div class="form-group">
 			    			<label for="vision">Vision</label>
-			    			<textarea name="vision" class="form-control" cols="3" rows="3"></textarea>
+			    			<textarea name="vision" id="about-vision" class="form-control" cols="3" rows="3"></textarea>
 			    		</div>
 
 			    		<div class="form-group">
 			    			<label for="mission">Mission</label>
-			    			<textarea name="mission" class="form-control" cols="3" rows="3"></textarea>
+			    			<textarea name="mission" id="about-mission" class="form-control" cols="3" rows="3"></textarea>
 			    		</div>
 
 					</div>
@@ -60,7 +68,7 @@
 
 						<div class="form-group">
 			    			<label for="body">Briefly explain about your company</label>
-			    			<textarea name="body" class="form-control" cols="3" rows="3"></textarea>
+			    			<textarea name="body" id="about-body" class="form-control" cols="3" rows="3"></textarea>
 			    		</div>
 					
 					</div>
@@ -80,3 +88,15 @@
     </div>
 
 @endsection
+
+<!--Summernote JS-->
+@section('script')
+
+	@include('includes.summernote')
+
+	<script>
+		loadTextEditor('about');
+	</script>
+
+@endsection
+<!--End-->

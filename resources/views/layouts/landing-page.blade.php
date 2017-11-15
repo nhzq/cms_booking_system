@@ -29,6 +29,8 @@
     <link href="{{ asset('css/creative.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
+    @yield('css')
+
   </head>
 
   <body id="page-top">
@@ -49,13 +51,13 @@
                         <a class="nav-link js-scroll-trigger" href="{{ route('frontend.about') }}">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="">Our Service</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ route('frontend.service') }}">Our Service</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="">Training &amp Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="">News &amp Media</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ route('frontend.news') }}">News &amp Media</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="">Contact Us</a>

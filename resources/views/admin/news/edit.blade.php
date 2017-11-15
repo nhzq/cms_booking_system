@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+<!--Summernote css-->
+@section('css')
+
+	<link href="{{ asset('vendor-admin/summernote/summernote.css') }}" rel="stylesheet">
+
+@endsection
+<!--End-->
+
 @section('content')
 
 	<div class="container">
@@ -11,7 +19,7 @@
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title">
-							Create news post
+							Edit news post
 							<span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
 						</h3>
 					</div>
@@ -25,7 +33,7 @@
 
 			    		<div class="form-group">
 			    			<label for="content">Content</label>
-			    			<textarea name="content" class="form-control" cols="3" rows="3">{{ $news->content }}</textarea>
+			    			<textarea name="content" id="news-content" class="form-control" cols="3" rows="3">{{ $news->content }}</textarea>
 			    		</div>
 
 					</div>
@@ -60,3 +68,11 @@
     </div>
 
 @endsection
+
+<!--Summernote JS-->
+@section('script')
+
+	@include('includes.summernote')
+
+@endsection
+<!--End-->

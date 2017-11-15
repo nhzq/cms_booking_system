@@ -18,12 +18,12 @@
 
 							<div class="col-md-12">
 								<p><span class="label label-info" style="font-size: 12px;">Vision</span></p>
-								<div class="well well-sm">{{ $data->vision }}</div>
+								<div class="well well-sm">{!! $data->vision !!}</div>
 							</div>
 						
 							<div class="col-md-12">
 								<p><span class="label label-info" style="font-size: 12px;">Mission</span></p>
-								<div class="well well-sm">{{ $data->mission }}</div>
+								<div class="well well-sm">{!! $data->mission !!}</div>
 							</div>
 
 						</div>
@@ -48,7 +48,7 @@
 
 							<div class="col-md-12">
 								<p><span class="label label-info" style="font-size: 12px;">Company Background</span></p>
-								<div class="well well-sm">{{ $data->body }}</div>
+								<div class="well well-sm">{!! $data->body !!}</div>
 							</div>
 						
 						</div>

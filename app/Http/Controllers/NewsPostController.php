@@ -15,7 +15,10 @@ class NewsPostController extends Controller
      */
     public function index()
     {
-        return view('admin.news.index')->with('news', Newspost::all());
+
+        return view('admin.news.index')
+            ->with('news', Newspost::orderBy('created_at', 'desc')->get())
+            ->with('i');
     }
 
     /**

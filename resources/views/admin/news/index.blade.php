@@ -17,8 +17,10 @@
 						<table class="table table-hover">
 							<thead>
 								<tr>
+									<th>List</th>
 									<th>Image</th>
 									<th>Title</th>
+									<th>Date</th>
 									<th>Edit</th>
 									<th>Delete</th>
 								</tr>
@@ -28,8 +30,10 @@
 								@foreach($news as $post)
 
 									<tr>
+										<td>{{ ++$i }}</td>
 										<td>John</td>
 										<td>{{ $post->title }}</td>
+										<td>{{ $post->created_at->toFormattedDateString() }}</td>
 										<td>
 											<a href="{{ route('news.edit', ['id' => $post->id]) }}" class="btn btn-success">Edit</a>
 										</td>

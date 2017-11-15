@@ -30,7 +30,20 @@ Route::get('/about', [
 	'as' => 'frontend.about'
 ]);
 
+Route::get('/our-service', [
+	'uses' => 'FrontEndController@service',
+	'as' => 'frontend.service'
+]);
 
+Route::get('/news-media', [
+	'uses' => 'FrontEndController@news',
+	'as' => 'frontend.news'
+]);
+
+Route::get('/news-media/post/{id}', [
+	'uses' => 'FrontEndController@newsPost',
+	'as' => 'frontend.news-post'
+]);
 
 
 Auth::routes();
