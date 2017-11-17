@@ -27,7 +27,7 @@
 
 						<div class="form-group">
 			    			<label for="vision">Vision</label>
-			    			<textarea name="vision" id="about-vision" class="form-control" cols="3" rows="3">{{ $about->vision }}</textarea>
+			    			<textarea name="vision" id="about-vision" class="form-control summernote" cols="3" rows="3">{{ $about->vision }}</textarea>
 			    		</div>
 
 						<div class="form-group">
@@ -37,7 +37,7 @@
 
 			    		<div class="form-group">
 			    			<label for="mission">Mission</label>
-			    			<textarea name="mission" id="about-mission" class="form-control" cols="3" rows="3">{{ $about->mission }}</textarea>
+			    			<textarea name="mission" id="about-mission" class="form-control summernote" cols="3" rows="3">{{ $about->mission }}</textarea>
 			    		</div>
 
 			    		<div class="form-group">
@@ -78,7 +78,7 @@
 
 						<div class="form-group">
 			    			<label for="body">Briefly explain about your company</label>
-			    			<textarea name="body" id="about-body" class="form-control" cols="3" rows="3">{{ $about->body }}</textarea>
+			    			<textarea name="body" id="about-body" class="form-control summernote" cols="3" rows="3">{{ $about->body }}</textarea>
 			    		</div>
 					
 					</div>

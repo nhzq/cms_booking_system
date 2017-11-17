@@ -68,15 +68,8 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                @if($post->count() == 0)
-                    
-                    <a class="navbar-brand" href="index.html">No records found</a>
-                    
-                @else
+                <a class="navbar-brand" href="index.html">{{ $post->company_name }}</a>
 
-                    <a class="navbar-brand" href="index.html">{{ $post->company_name }}</a>
-
-                @endif
             </div>
             <!-- /.navbar-header -->
 
@@ -119,9 +112,9 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li>
+                        {{-- <li>
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Homepage<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -176,9 +169,9 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Contact Us</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

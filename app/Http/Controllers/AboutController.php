@@ -93,12 +93,6 @@ class AboutController extends Controller
     {
         $about = About::find($id);
 
-        if($about->count() == 0) {
-            Session::flash('info', "You do not have any post. Please create a new post first");
-            
-            return redirect()->route('about.index');
-        }
-
         return view('admin.about.edit')->with('about', $about);
     }
 

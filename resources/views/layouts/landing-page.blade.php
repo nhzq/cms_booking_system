@@ -11,16 +11,8 @@
     @php
         $post = App\Homepage::first();
     @endphp
-    
-    @if($post->count() > 0)
 
-        <title>{{ $post->company_name }}</title>
-
-    @else 
-        
-        <title>No records found</title>
-
-    @endif
+    <title>{{ $post->company_name }}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -47,15 +39,7 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
 
-            @if($post->count() == 0)
-
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">No records found</a>
-
-            @else 
-
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">{{ $post->company_name }}</a>
-
-            @endif
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">{{ $post->company_name }}</a>
             
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -86,6 +70,12 @@
     </nav>
 
     @yield('content')
+
+    <section class="bg-dark text-white" style="padding:10px;">
+        <div class="container text-center">
+            <h6 class="mb-4" style="margin-top: 12px;">{{ $post->company_name }} &copy; <?php echo date("Y"); ?> Copyright.</h6>
+        </div>
+    </section>
 
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('vendor/jquery/jquery.min.js')}}"></script>

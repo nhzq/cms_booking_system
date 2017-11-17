@@ -38,7 +38,7 @@
 
 			    		<div class="form-group">
 			    			<label for="content">Content</label>
-			    			<textarea name="content" id="news-content" class="form-control" cols="10" rows="10"></textarea>
+			    			<textarea name="content" id="news-content" class="form-control summernote" cols="10" rows="10"></textarea>
 			    		</div>
 
 					</div>

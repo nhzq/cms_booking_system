@@ -116,12 +116,6 @@ class HomepageController extends Controller
     {
         $homepage = Homepage::find($id);
 
-        if($homepage->count() == 0) {
-            Session::flash('info', "You do not have any post. Please create a new post first");
-            
-            return redirect()->route('homepage.index');
-        }
-
         return view('admin.homepage.edit')->with('homepage', $homepage);
     }
 

@@ -47,7 +47,7 @@ class NewsPostController extends Controller
 
         $image = $request->image;
         $image_name = time() . $image->getClientOriginalName();
-        $image->move('img/aboutImage', $image_name);
+        $image->move('img/postImage', $image_name);
 
         $news = NewsPost::create([
             'title' => $request->title,

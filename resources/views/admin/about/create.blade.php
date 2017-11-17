@@ -27,13 +27,23 @@
 
 						<div class="form-group">
 			    			<label for="vision">Vision</label>
-			    			<textarea name="vision" id="about-vision" class="form-control" cols="3" rows="3"></textarea>
+			    			<textarea name="vision" id="about-vision" class="form-control summernote" cols="3" rows="3"></textarea>
 			    		</div>
 
 			    		<div class="form-group">
+							<label for="image_1">Vision Image</label>
+							<input type="file" name="image_1" class="form-control">
+						</div>
+
+			    		<div class="form-group">
 			    			<label for="mission">Mission</label>
-			    			<textarea name="mission" id="about-mission" class="form-control" cols="3" rows="3"></textarea>
+			    			<textarea name="mission" id="about-mission" class="form-control summernote" cols="3" rows="3"></textarea>
 			    		</div>
+
+			    		<div class="form-group">
+							<label for="image_2">Mission Image</label>
+							<input type="file" name="image_2" class="form-control">
+						</div>
 
 					</div>
 
@@ -68,7 +78,7 @@
 
 						<div class="form-group">
 			    			<label for="body">Briefly explain about your company</label>
-			    			<textarea name="body" id="about-body" class="form-control" cols="3" rows="3"></textarea>
+			    			<textarea name="body" id="about-body" class="form-control summernote" cols="3" rows="3"></textarea>
 			    		</div>
 					
 					</div>

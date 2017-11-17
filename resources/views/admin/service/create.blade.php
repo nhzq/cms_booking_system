@@ -28,13 +28,13 @@
 
 						<div class="form-group">
 			    			<label for="intro">Introduction</label>
-			    			<textarea name="body" id="service-intro" class="form-control" cols="3" rows="3"></textarea>
+			    			<textarea name="body" id="service-intro" class="form-control summernote" cols="3" rows="3"></textarea>
 			    		</div>
 
 			    		<div class="col-md-4">
 							<div class="form-group">
 								<label for="intro_image">Image: Introduction</label>
-								<input type="file" name="Intro_image" class="form-control">
+								<input type="file" name="intro_image" class="form-control">
 							</div>
 						</div>
 
@@ -71,7 +71,7 @@
 
 						<div class="form-group">
 			    			<label for="body">Body</label>
-			    			<textarea name="body" id="service-body" class="form-control" cols="3" rows="3"></textarea>
+			    			<textarea name="body" id="service-body" class="form-control summernote" cols="3" rows="3"></textarea>
 			    		</div>
 
 			    		<div class="col-md-4">

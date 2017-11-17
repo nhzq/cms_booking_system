@@ -67,7 +67,7 @@ class FrontEndController extends Controller
             );
 
         Mail::send('emails.contact', $data, function($message) use ($data) {
-            $message->to('');
+            $message->to('vac.noorhaziq@gmail.com');
             $message->from($data['sender_email']);
             $message->subject('Enquiry about project');
         });

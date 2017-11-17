@@ -52,11 +52,11 @@ class ServiceController extends Controller
 
         $intro_image = $request->intro_image;
         $image_name = time() . $intro_image->getClientOriginalName();
-        $intro_image->move('img/aboutImage', $image_name);
+        $intro_image->move('img/serviceImage', $image_name);
 
         $body_image = $request->body_image;
         $image_name_body = time() . $body_image->getClientOriginalName();
-        $body_image->move('img/aboutImage', $image_name_body);
+        $body_image->move('img/serviceImage', $image_name_body);
 
         $service = Service::create([
             'intro' => $request->intro,
@@ -90,12 +90,6 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $service = Service::find($id);
-
-        if($service->count() == 0) {
-            Session::flash('info', "You do not have any post. Please create a new post first");
-            
-            return redirect()->route('service.index');
-        }
 
         return view('admin.service.edit')->with('service', $service);
     }
