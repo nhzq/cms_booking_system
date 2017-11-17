@@ -31,7 +31,17 @@
 
 									<tr>
 										<td>{{ ++$i }}</td>
-										<td>John</td>
+
+										@if(count($post->image) > 0)
+
+											<td><img src="{{ asset('img/postImage/' . $post->image) }}" style="max-width: 70px;"></td>
+
+										@else
+
+											<td>No image</td>
+
+										@endif
+
 										<td>{{ $post->title }}</td>
 										<td>{{ $post->created_at->toFormattedDateString() }}</td>
 										<td>
