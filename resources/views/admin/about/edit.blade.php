@@ -30,10 +30,20 @@
 			    			<textarea name="vision" id="about-vision" class="form-control" cols="3" rows="3">{{ $about->vision }}</textarea>
 			    		</div>
 
+						<div class="form-group">
+							<label for="image_1">Vision Image</label>
+							<input type="file" name="image_1" class="form-control">
+						</div>
+
 			    		<div class="form-group">
 			    			<label for="mission">Mission</label>
 			    			<textarea name="mission" id="about-mission" class="form-control" cols="3" rows="3">{{ $about->mission }}</textarea>
 			    		</div>
+
+			    		<div class="form-group">
+							<label for="image_2">Mission Image</label>
+							<input type="file" name="image_2" class="form-control">
+						</div>
 
 					</div>
 

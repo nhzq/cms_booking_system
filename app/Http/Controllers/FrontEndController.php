@@ -7,6 +7,8 @@ use App\Homepage;
 use App\About;
 use App\Service;
 use App\Newspost;
+use App\Mail\SendEmail;
+use Mail;
 
 class FrontEndController extends Controller
 {
@@ -37,10 +39,37 @@ class FrontEndController extends Controller
         return view('news-list')->with('news', Newspost::orderBy('created_at', 'desc')->paginate(3));
     }
 
-    public function newsPost($id)
+    public function newsPost($slug)
     {
-        $post = Newspost::find($id);
+        $post = Newspost::where('slug', $slug)->first();
 
         return view('news-post')->with('post', $post);
+    }
+
+    public function contact()
+    {
+        return view('contact');
+    }
+
+    //For sending email
+    public function contactSend(Request $request)
+    {
+        $this->validate($request, [
+            'sender_name' => 'required|min:3',
+            'sender_email' => 'required|email',
+            'sender_message' => 'required|min:10'
+        ]);
+
+        $data = array(
+                'sender_name' => $request->sender_name,
+                'sender_email' => $request->sender_email,
+                'sender_message' => $request->sender_message
+            );
+
+        Mail::send('emails.contact', $data, function($message) use ($data) {
+            $message->to('');
+            $message->from($data['sender_email']);
+            $message->subject('Enquiry about project');
+        });
     }
 }

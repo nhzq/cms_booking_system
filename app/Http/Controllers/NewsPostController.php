@@ -41,11 +41,17 @@ class NewsPostController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
+            'image' => 'image|max:5000',
             'content' => 'required'
         ]);
 
+        $image = $request->image;
+        $image_name = time() . $image->getClientOriginalName();
+        $image->move('img/aboutImage', $image_name);
+
         $news = NewsPost::create([
             'title' => $request->title,
+            'image' => 'img/postImage/' . $image_name,
             'content' => $request->content,
             'slug' => str_slug($request->title)
         ]);
@@ -88,13 +94,30 @@ class NewsPostController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
+            'image' => 'image|max:5000',
             'content' => 'required'
         ]);
 
         $news = Newspost::find($id);
 
+        if($request->hasFile('image')) {
+
+            //Get item
+            $image = $request->image;
+
+            //Give name to the item
+            $image_name = time() . $image->getClientOriginalName();
+
+            //Move to the item to specified folder
+            $image->move('img/postImage', $image_name);
+
+            //Get the item with new name
+            $news->image = $image_name;
+        }
+
         $news->title = $request->title;
         $news->content = $request->content;
+        $news->slug = str_slug($request->title);
         $news->save();
 
         Session::flash('success', "Post has been successfully updated");

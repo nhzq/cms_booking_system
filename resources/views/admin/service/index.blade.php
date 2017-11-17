@@ -13,15 +13,30 @@
 					</div>
 
 					@foreach($service as $data)
-						
-						<div class="panel-body">
 
-							<div class="col-md-12">
-								<p><span class="label label-info" style="font-size: 12px;">Introduction</span></p>
-								<div class="well well-sm">{{ $data->intro }}</div>
+						@if($data->count() == 0)
+						
+							<div class="panel-body">
+
+								<div class="col-md-12">
+									<p><span class="label label-info" style="font-size: 12px;">Introduction</span></p>
+									<div class="well well-sm">No records found</div>
+								</div>
+
 							</div>
 
-						</div>
+						@else
+
+							<div class="panel-body">
+
+								<div class="col-md-12">
+									<p><span class="label label-info" style="font-size: 12px;">Introduction</span></p>
+									<div class="well well-sm">{!! $data->intro !!}</div>
+								</div>
+
+							</div>
+
+						@endif
 
 					@endforeach
 
@@ -38,15 +53,30 @@
 					</div>
 
 					@foreach($service as $data)
-						
-						<div class="panel-body">
 
-							<div class="col-md-12">
-								<p><span class="label label-info" style="font-size: 12px;">Body</span></p>
-								<div class="well well-sm">{!! $data->body !!}</div>
-							</div>
+						@if($data->count() == 0)
 						
-						</div>
+							<div class="panel-body">
+
+								<div class="col-md-12">
+									<p><span class="label label-info" style="font-size: 12px;">Body</span></p>
+									<div class="well well-sm">No records found</div>
+								</div>
+							
+							</div>
+
+						@else
+
+							<div class="panel-body">
+
+								<div class="col-md-12">
+									<p><span class="label label-info" style="font-size: 12px;">Body</span></p>
+									<div class="well well-sm">{!! $data->body !!}</div>
+								</div>
+							
+							</div>
+
+						@endif
 
 					@endforeach
 

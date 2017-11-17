@@ -13,20 +13,40 @@
 					</div>
 
 					@foreach($about as $data)
-						
-						<div class="panel-body">
 
-							<div class="col-md-12">
-								<p><span class="label label-info" style="font-size: 12px;">Vision</span></p>
-								<div class="well well-sm">{!! $data->vision !!}</div>
-							</div>
-						
-							<div class="col-md-12">
-								<p><span class="label label-info" style="font-size: 12px;">Mission</span></p>
-								<div class="well well-sm">{!! $data->mission !!}</div>
+						@if($data->count == 0)
+							
+							<div class="panel-body">
+
+								<div class="col-md-12">
+									<p><span class="label label-info" style="font-size: 12px;">Vision</span></p>
+									<div class="well well-sm">No records found</div>
+								</div>
+							
+								<div class="col-md-12">
+									<p><span class="label label-info" style="font-size: 12px;">Mission</span></p>
+									<div class="well well-sm">No records found</div>
+								</div>
+
 							</div>
 
-						</div>
+						@else
+
+							<div class="panel-body">
+
+								<div class="col-md-12">
+									<p><span class="label label-info" style="font-size: 12px;">Vision</span></p>
+									<div class="well well-sm">{!! $data->vision !!}</div>
+								</div>
+							
+								<div class="col-md-12">
+									<p><span class="label label-info" style="font-size: 12px;">Mission</span></p>
+									<div class="well well-sm">{!! $data->mission !!}</div>
+								</div>
+
+							</div>
+
+						@endif
 
 					@endforeach
 
@@ -46,10 +66,21 @@
 						
 						<div class="panel-body">
 
-							<div class="col-md-12">
-								<p><span class="label label-info" style="font-size: 12px;">Company Background</span></p>
-								<div class="well well-sm">{!! $data->body !!}</div>
-							</div>
+							@if($data->count() == 0)
+
+								<div class="col-md-12">
+									<p><span class="label label-info" style="font-size: 12px;">Company Background</span></p>
+									<div class="well well-sm">No records found</div>
+								</div>
+
+							@else
+
+								<div class="col-md-12">
+									<p><span class="label label-info" style="font-size: 12px;">Company Background</span></p>
+									<div class="well well-sm">{!! $data->body !!}</div>
+								</div>
+
+							@endif
 						
 						</div>
 

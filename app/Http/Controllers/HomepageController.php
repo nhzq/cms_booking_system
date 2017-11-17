@@ -116,6 +116,12 @@ class HomepageController extends Controller
     {
         $homepage = Homepage::find($id);
 
+        if($homepage->count() == 0) {
+            Session::flash('info', "You do not have any post. Please create a new post first");
+            
+            return redirect()->route('homepage.index');
+        }
+
         return view('admin.homepage.edit')->with('homepage', $homepage);
     }
 
@@ -133,9 +139,9 @@ class HomepageController extends Controller
         $this->validate($request, [
             'company_name' => 'required',
             'phone' => 'required',
-            'header_image' => 'max:5000',
-            'header_image_2' => 'max:5000',
-            'header_image_3' => 'max:5000',
+            'header_image' => 'image|max:5000',
+            'header_image_2' => 'image|max:5000',
+            'header_image_3' => 'image|max:5000',
             'email' => 'required',
             'service_1' => 'required',
             'service_2' => 'required',

@@ -40,9 +40,19 @@ Route::get('/news-media', [
 	'as' => 'frontend.news'
 ]);
 
-Route::get('/news-media/post/{id}', [
+Route::get('/news-media/post/{slug}', [
 	'uses' => 'FrontEndController@newsPost',
 	'as' => 'frontend.news-post'
+]);
+
+Route::get('/contact', [
+	'uses' => 'FrontEndController@contact',
+	'as' => 'frontend.contact'
+]);
+
+Route::post('/contact/send', [
+	'uses' => 'FrontEndController@contactSend',
+	'as' => 'frontend.contact.send'
 ]);
 
 

@@ -11,8 +11,16 @@
     @php
         $post = App\Homepage::first();
     @endphp
+    
+    @if($post->count() > 0)
 
-    <title>{{ $post->company_name }}</title>
+        <title>{{ $post->company_name }}</title>
+
+    @else 
+        
+        <title>No records found</title>
+
+    @endif
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -38,7 +46,17 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">{{ $post->company_name }}</a>
+
+            @if($post->count() == 0)
+
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">No records found</a>
+
+            @else 
+
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">{{ $post->company_name }}</a>
+
+            @endif
+            
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -60,7 +78,7 @@
                         <a class="nav-link js-scroll-trigger" href="{{ route('frontend.news') }}">News &amp Media</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="">Contact Us</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ route('frontend.contact') }}">Contact Us</a>
                     </li>
                 </ul>
             </div>

@@ -29,18 +29,29 @@
 
 								@foreach($news as $post)
 
-									<tr>
-										<td>{{ ++$i }}</td>
-										<td>John</td>
-										<td>{{ $post->title }}</td>
-										<td>{{ $post->created_at->toFormattedDateString() }}</td>
-										<td>
-											<a href="{{ route('news.edit', ['id' => $post->id]) }}" class="btn btn-success">Edit</a>
-										</td>
-										<td>
-											<a href="{{ route('news.delete', ['id' => $post->id]) }}" class="btn btn-danger">Delete</a>
-										</td>
-									</tr>
+									@if($post->count() == 0)
+
+										<tr>
+											<td>1</td>
+											<td>No records found</td>
+										</tr>
+
+									@else
+
+										<tr>
+											<td>{{ ++$i }}</td>
+											<td>John</td>
+											<td>{{ $post->title }}</td>
+											<td>{{ $post->created_at->toFormattedDateString() }}</td>
+											<td>
+												<a href="{{ route('news.edit', ['id' => $post->id]) }}" class="btn btn-success">Edit</a>
+											</td>
+											<td>
+												<a href="{{ route('news.delete', ['id' => $post->id]) }}" class="btn btn-danger">Delete</a>
+											</td>
+										</tr>
+
+									@endif
 
 								@endforeach
 

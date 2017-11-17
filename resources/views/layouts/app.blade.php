@@ -67,7 +67,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">{{ $post->company_name }}</a>
+
+                @if($post->count() == 0)
+                    
+                    <a class="navbar-brand" href="index.html">No records found</a>
+                    
+                @else
+
+                    <a class="navbar-brand" href="index.html">{{ $post->company_name }}</a>
+
+                @endif
             </div>
             <!-- /.navbar-header -->
 

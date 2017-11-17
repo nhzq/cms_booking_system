@@ -18,8 +18,8 @@ class CreateAboutsTable extends Migration
             $table->text('vision');
             $table->text('mission');
             $table->text('body');
-            $table->string('image_1')->nullable();
-            $table->string('image_2')->nullable();
+            $table->string('image_1');
+            $table->string('image_2');
             $table->timestamps();
         });
     }

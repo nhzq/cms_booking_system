@@ -45,12 +45,24 @@ class AboutController extends Controller
     {
         $this->validate($request, [
             'vision' => 'required',
+            'image_1' => 'required|image|max:5000',
             'mission' => 'required',
+            'image_2' => 'required|image|max:5000',
             'body' => 'required'
         ]);
 
+        $image_1 = $request->image_1;
+        $image_name = time() . $image_1->getClientOriginalName();
+        $image_1->move('img/aboutImage', $image_name);
+
+        $image_2 = $request->image_2;
+        $image_name_2 = time() . $image_2->getClientOriginalName();
+        $image_2->move('img/aboutImage', $image_name_2);
+
         $about = About::create([
             'vision' => $request->vision,
+            'image_1' => 'img/aboutImage/' . $image_name,
+            'image_2' => 'img/aboutImage/' . $image_name_2,
             'mission' => $request->mission,
             'body' => $request->body
         ]);
@@ -81,6 +93,12 @@ class AboutController extends Controller
     {
         $about = About::find($id);
 
+        if($about->count() == 0) {
+            Session::flash('info', "You do not have any post. Please create a new post first");
+            
+            return redirect()->route('about.index');
+        }
+
         return view('admin.about.edit')->with('about', $about);
     }
 
@@ -95,11 +113,43 @@ class AboutController extends Controller
     {
         $this->validate($request, [
             'vision' => 'required',
+            'image_1' => 'image|max:5000',
             'mission' => 'required',
+            'image_2' => 'image|max:5000',
             'body' => 'required'
         ]);
 
         $about = About::find($id);
+
+        if($request->hasFile('image_1')) {
+
+            //Get item
+            $image_1 = $request->image_1;
+
+            //Give name to the item
+            $image_name = time() . $image_1->getClientOriginalName();
+
+            //Move to the item to specified folder
+            $image_1->move('img/aboutImage', $image_name);
+
+            //Get the item with new name
+            $about->image_1 = $image_name;
+        }
+
+        if($request->hasFile('image_2')) {
+
+            //Get item
+            $image_2 = $request->image_2;
+
+            //Give name to the item
+            $image_name_2 = time() . $image_2->getClientOriginalName();
+
+            //Move to the item to specified folder
+            $image_2->move('img/aboutImage', $image_name_2);
+
+            //Get the item with new name
+            $about->image_2 = $image_name_2;
+        }
 
         $about->vision = $request->vision;
         $about->mission = $request->mission;

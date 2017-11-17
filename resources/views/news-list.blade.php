@@ -85,29 +85,58 @@
 
 	        @foreach($news as $post)
 
-				<div class="row">
-					<div class="col-md-8">
-						<!-- Blog Post -->
-						<div class="card mb-4">
-							<img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-							<div class="card-body">
-								<h2 class="card-title">{{ $post->title }}</h2>
-								<p class="card-text">{!! str_limit($post->content, 300) !!}</p>
-								<a href="{{ route('frontend.news-post', ['id' => $post->id]) }}" class="btn btn-primary" style="font-size: 12px;">Read More &rarr;</a>
-							</div>
-							<div class="card-footer text-muted">
-								Posted on {{ $post->created_at->diffForHumans() }}
+	        	@if($post->count() == 0)
+
+					<div class="row">
+						<div class="col-md-8">
+							<!-- Blog Post -->
+							<div class="card mb-4">
+								<img class="card-img-top" src="http://placehold.it/750x500" style="max-width:750px;">
+								<div class="card-body">
+									No records found
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+
+	        	@else
+
+					<div class="row">
+						<div class="col-md-8">
+							<!-- Blog Post -->
+							<div class="card mb-4">
+
+								@if(count($post->image) > 0)
+
+									<img class="card-img-top" src="{{ asset('img/postImage/' . $post->image) }}" style="max-width:750px;">
+
+								@endif
+
+								<div class="card-body">
+									<h2 class="card-title">{{ $post->title }}</h2>
+									<p class="card-text">{!! str_limit($post->content, 300) !!}</p>
+									<a href="{{ route('frontend.news-post', ['slug' => $post->slug]) }}" class="btn btn-primary" style="font-size: 12px;">Read More &rarr;</a>
+								</div>
+								<div class="card-footer text-muted">
+									Posted on {{ $post->created_at->toFormattedDateString() }}
+								</div>
+							</div>
+						</div>
+					</div>
+
+				@endif
 
 			@endforeach
-			<div class="col-md-8">
-				<div class="pull-right">
-					{{ $news->links() }}
+
+			@if($news->count() > 0)
+
+				<div class="col-md-8">
+					<div class="pull-right">
+						{{ $news->links() }}
+					</div>
 				</div>
-			</div>
+
+			@endif
 
 		</div>
 	</section>

@@ -9,25 +9,34 @@
 		        <!-- Post Content Column -->
 		        <div class="col-lg-8">
 
-		          <!-- Title -->
-		          <h1 class="mt-4">{{ $post->title }}</h1>
+		        	@if($post->count() > 0)
 
-		          <hr>
+						<!-- Title -->
+						<h1 class="mt-4">{{ $post->title }}</h1>
 
-		          <!-- Date/Time -->
-		          <p>Posted on {{ $post->created_at->diffForHumans() }}</p>
+						<!-- Date/Time -->
+						<p class="text-muted">Posted on {{ $post->created_at->toFormattedDateString() }}</p>
 
-		          <hr>
+						<!-- Preview Image -->
+						{{-- <img class="img-fluid rounded" src="http://placehold.it/900x300" alt=""> --}}
+						@if(count($post->image) > 0)
+							<br>
+							<br>
+							<img class="img-fluid rounded" src="{{ asset('img/postImage/' . $post->image) }}" style="max-width: 730px;">
 
-		          <!-- Preview Image -->
-		          <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+						@endif
 
-		          <hr>
+						<!-- Post Content -->
+						<br>
+						<br>
+						<p>{!! $post->content !!}</p>
 
-		          <!-- Post Content -->
-		          <p>{!! $post->content !!}</p>
+					@else
 
-		          <hr>
+						No records found
+
+					@endif
+
 		        </div>
 
 		</div>

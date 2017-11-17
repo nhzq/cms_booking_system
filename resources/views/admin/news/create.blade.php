@@ -31,6 +31,11 @@
 			    			<input type="text" name="title" class="form-control">
 			    		</div>
 
+						<div class="form-group">
+							<label for="image">Image: Post</label>
+							<input type="file" name="image" class="form-control">
+						</div>
+
 			    		<div class="form-group">
 			    			<label for="content">Content</label>
 			    			<textarea name="content" id="news-content" class="form-control" cols="10" rows="10"></textarea>

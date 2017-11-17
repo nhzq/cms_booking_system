@@ -45,11 +45,23 @@ class ServiceController extends Controller
     {
         $this->validate($request, [
             'intro' => 'required',
-            'body' => 'required'
+            'intro_image' => 'required|image|max:5000',
+            'body' => 'required',
+            'body_image' => 'required|image|max:5000',
         ]);
+
+        $intro_image = $request->intro_image;
+        $image_name = time() . $intro_image->getClientOriginalName();
+        $intro_image->move('img/aboutImage', $image_name);
+
+        $body_image = $request->body_image;
+        $image_name_body = time() . $body_image->getClientOriginalName();
+        $body_image->move('img/aboutImage', $image_name_body);
 
         $service = Service::create([
             'intro' => $request->intro,
+            'intro_image' => 'img/serviceImage/' . $image_name,
+            'body_image' => 'img/serviceImage/' . $image_name_body,
             'body' => $request->body
         ]);
 
@@ -79,6 +91,12 @@ class ServiceController extends Controller
     {
         $service = Service::find($id);
 
+        if($service->count() == 0) {
+            Session::flash('info', "You do not have any post. Please create a new post first");
+            
+            return redirect()->route('service.index');
+        }
+
         return view('admin.service.edit')->with('service', $service);
     }
 
@@ -97,6 +115,37 @@ class ServiceController extends Controller
         ]);
 
         $service = Service::find($id);
+
+        if($request->hasFile('intro_image')) {
+
+            //Get item
+            $intro_image = $request->intro_image;
+
+            //Give name to the item
+            $image_name = time() . $intro_image->getClientOriginalName();
+
+            //Move to the item to specified folder
+            $intro_image->move('img/serviceImage', $image_name);
+
+            //Get the item with new name
+            $service->intro_image = $image_name;
+        }
+
+        if($request->hasFile('body_image')) {
+
+            //Get item
+            $body_image = $request->body_image;
+
+            //Give name to the item
+            $image_name_body = time() . $body_image->getClientOriginalName();
+
+            //Move to the item to specified folder
+            $body_image->move('img/serviceImage', $image_name_body);
+
+            //Get the item with new name
+            $service->body_image = $image_name_body;
+        }
+        
 
         $service->intro = $request->intro;
         $service->body = $request->body;

@@ -26,7 +26,7 @@ class CreateHomepagesTable extends Migration
             $table->string('service_2');
             $table->string('service_3');
             $table->string('service_4');
-            $table->integer('phone');
+            $table->string('phone');
             $table->string('email');
             $table->timestamps();
         });
