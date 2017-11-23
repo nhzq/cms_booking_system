@@ -32,6 +32,7 @@ class AboutController extends Controller
             
             return redirect()->route('about.index');
         }
+        
         return view('admin.about.create');
     }
 

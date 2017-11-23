@@ -12,7 +12,7 @@
 						</h3>
 					</div>
 
-					@foreach($about as $data)
+					@forelse($about as $data)
 
 						<div class="panel-body">
 
@@ -28,7 +28,23 @@
 
 						</div>
 
-					@endforeach
+					@empty
+
+						<div class="panel-body">
+
+							<div class="col-md-12">
+								<p><span class="label label-info" style="font-size: 12px;">Vision</span></p>
+								<div class="well well-sm">No records found</div>
+							</div>
+						
+							<div class="col-md-12">
+								<p><span class="label label-info" style="font-size: 12px;">Mission</span></p>
+								<div class="well well-sm">No records found</div>
+							</div>
+
+						</div>
+
+					@endforelse
 
 				</div>
 			</div>
@@ -42,7 +58,7 @@
 						</h3>
 					</div>
 
-					@foreach($about as $data)
+					@forelse($about as $data)
 						
 						<div class="panel-body">
 
@@ -53,7 +69,18 @@
 						
 						</div>
 
-					@endforeach
+					@empty
+
+						<div class="panel-body">
+
+							<div class="col-md-12">
+								<p><span class="label label-info" style="font-size: 12px;">Company Background</span></p>
+								<div class="well well-sm">No records found</div>
+							</div>
+						
+						</div>
+
+					@endforelse
 
 				</div>
 			</div>

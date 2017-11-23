@@ -11,8 +11,15 @@
 @section('content')
 	
 	<div class="container">
-		<form action="{{ route('about.store') }}" method="post" enctype="multipart/form-data">
+		<form id="about-create" action="{{ route('about.store') }}" method="post" enctype="multipart/form-data">
 			{{ csrf_field() }}
+
+			<!-- Error -->
+			@if(count($errors) > 0)
+
+				<div id="noti-growl"></div>
+
+			@endif
 
 			<div class="col-md-8" style="margin-top: 30px !important;">
 				<div class="panel panel-primary">
@@ -49,21 +56,6 @@
 
 				</div>
 			</div>
-
-			<!-- Error -->
-			@if(count($errors) > 0)
-
-				<div class="col-md-4" style="margin-top: 30px !important;">
-					<ul class="list-group">
-						@foreach($errors->all() as $error)
-							<li class="list-group-item text-danger">
-								{{ $error }}
-							</li>
-						@endforeach			
-					</ul>
-				</div>
-
-			@endif
 
 			<div class="col-md-8">
 				<div class="panel panel-primary">
@@ -105,7 +97,18 @@
 	@include('includes.summernote')
 
 	<script>
-		loadTextEditor('about');
+		
+        $.bootstrapGrowl("The required input (*) cannot be left blank", {
+    		ele: '#noti-growl', // which element to append to
+			type: 'danger', // (null, 'info', 'danger', 'success')
+			offset: {from: 'top', amount: 20}, // 'top', or 'bottom'
+			align: 'center', // ('left', 'right', or 'center')
+			width: 'auto', // (integer, or 'auto')
+			delay: 4000, // Time while the message will be displayed. It's not equivalent to the *demo* timeOut!
+			allow_dismiss: true, // If true then will display a cross to close the popup.
+			stackup_spacing: 10 // spacing between consecutively stacked growls.
+        });
+
 	</script>
 
 @endsection

@@ -30,20 +30,41 @@
             <div class="carousel-inner" role="listbox">
                 <!-- Slide One - Set the background image for this slide in the line below -->
 
-                <div class="carousel-item active" style="background-image: url('{{ asset("img/homeImage/$post->header_image") }}')">
-                    <div class="carousel-caption d-none d-md-block" style="margin-bottom: 100px;">
-                        <h3>{{ $post->headline }}</h3>
-                        <p>{{ $post->headline_brief }}</p>
+                @if(count($post) > 0)
+
+                    <div class="carousel-item active" style="background-image: url('{{ asset("img/homeImage/$post->header_image") }}')">
+                        <div class="carousel-caption d-none d-md-block" style="margin-bottom: 100px;">
+                            <h3>{{ $post->headline }}</h3>
+                            <p>{{ $post->headline_brief }}</p>
+                        </div>
                     </div>
-                </div>
-                <!-- Slide Two - Set the background image for this slide in the line below -->
-                <div class="carousel-item" style="background-image: url('{{ asset("img/homeImage/$post->header_image_2") }}')">
-                    <div class="carousel-caption d-none d-md-block" style="margin-bottom: 100px;"></div>
-                </div>
-                <!-- Slide Three - Set the background image for this slide in the line below -->
-                <div class="carousel-item" style="background-image: url('{{ asset("img/homeImage/$post->header_image_3") }}')">
-                    <div class="carousel-caption d-none d-md-block" style="margin-bottom: 100px;"></div>
-                </div>
+                    <!-- Slide Two - Set the background image for this slide in the line below -->
+                    <div class="carousel-item" style="background-image: url('{{ asset("img/homeImage/$post->header_image_2") }}')">
+                        <div class="carousel-caption d-none d-md-block" style="margin-bottom: 100px;"></div>
+                    </div>
+                    <!-- Slide Three - Set the background image for this slide in the line below -->
+                    <div class="carousel-item" style="background-image: url('{{ asset("img/homeImage/$post->header_image_3") }}')">
+                        <div class="carousel-caption d-none d-md-block" style="margin-bottom: 100px;"></div>
+                    </div>
+
+                @else
+
+                    <div class="carousel-item active" style="background-image: url('http://via.placeholder.com/1900x1267')">
+                        <div class="carousel-caption d-none d-md-block" style="margin-bottom: 100px;">
+                            <h3>No records found</h3>
+                            <p>No records found</p>
+                        </div>
+                    </div>
+                    <!-- Slide Two - Set the background image for this slide in the line below -->
+                    <div class="carousel-item" style="background-image: url('http://via.placeholder.com/1900x1267')">
+                        <div class="carousel-caption d-none d-md-block" style="margin-bottom: 100px;"></div>
+                    </div>
+                    <!-- Slide Three - Set the background image for this slide in the line below -->
+                    <div class="carousel-item" style="background-image: url('http://via.placeholder.com/1900x1267')">
+                        <div class="carousel-caption d-none d-md-block" style="margin-bottom: 100px;"></div>
+                    </div>
+
+                @endif
 
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -64,7 +85,16 @@
                     <h2 class="section-heading text-white">We've got what you need!</h2>
                     <hr class="light my-4">
                     <!-- Explain a bit about company's services -->
-                    <p class="text-faded mb-4">{{ $post->services_brief }}</p>
+
+                    @if(count($post) > 0) 
+
+                        <p class="text-faded mb-4">{{ $post->services_brief }}</p>
+
+                    @else
+
+                        <p class="text-faded mb-4">No records found</p>
+
+                    @endif
 
                     <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
                 </div>
@@ -88,15 +118,31 @@
                     <i class="fa fa-4x fa-diamond text-primary mb-3 sr-icons"></i>
                     <!-- Company expertise -->
                     {{-- <h3 class="mb-3">Sturdy Templates</h3> --}}
+                    @if(count($post) > 0)
 
-                    <p class="text-muted mb-0">{{ $post->service_1 }}</p>
+                        <p class="text-muted mb-0">{{ $post->service_1 }}</p>
+
+                    @else 
+
+                        <p class="text-muted mb-0">No records found</p>
+
+                    @endif
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="service-box mt-5 mx-auto">
                     <i class="fa fa-4x fa-paper-plane text-primary mb-3 sr-icons"></i>
                     <!-- Company expertise -->
-                    <p class="text-muted mb-0">{{ $post->service_2 }}</p>
+
+                    @if(count($post) > 0)
+
+                        <p class="text-muted mb-0">{{ $post->service_2 }}</p>
+
+                    @else
+
+                        <p class="text-muted mb-0">No records found</p>
+
+                    @endif
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
@@ -104,7 +150,16 @@
                     <i class="fa fa-4x fa-newspaper-o text-primary mb-3 sr-icons"></i>
                     <!-- Company expertise -->
                     {{-- <h3 class="mb-3">Up to Date</h3> --}}
-                    <p class="text-muted mb-0">{{ $post->service_3 }}</p>
+
+                    @if(count($post) > 0)
+
+                        <p class="text-muted mb-0">{{ $post->service_3 }}</p>
+
+                    @else
+                        
+                        <p class="text-muted mb-0">No records found</p>
+
+                    @endif
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
@@ -112,9 +167,16 @@
                     <i class="fa fa-4x fa-heart text-primary mb-3 sr-icons"></i>
                     <!-- Company expertise -->
                     {{-- <h3 class="mb-3">Made with Love</h3> --}}    
+                    
+                    @if(count($post) > 0)
 
-                    <p class="text-muted mb-0">{{ $post->service_4 }}</p>
+                        <p class="text-muted mb-0">{{ $post->service_4 }}</p>
 
+                    @else
+                        
+                        <p class="text-muted mb-0">No records found</p>
+
+                    @endif
                 </div>
             </div>
         </div>
@@ -142,13 +204,30 @@
         <div class="col-lg-4 ml-auto text-center">
             <i class="fa fa-phone fa-3x mb-3 sr-contact"></i>
 
-            <p>{{ $post->phone }}</p>
+            @if(count($post) > 0)
+
+                <p>{{ $post->phone }}</p>
+
+            @else
+                
+                <p>No records found</p>
+
+            @endif
 
         </div>
         <div class="col-lg-4 mr-auto text-center">
             <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
             <p>
-                <a href="">{{ $post->email }}</a>
+
+                @if(count($post) > 0)
+
+                    <a href="">{{ $post->email }}</a>
+                @else
+                
+                    No records found
+
+                @endif
+
             </p>
         </div>
     </div>

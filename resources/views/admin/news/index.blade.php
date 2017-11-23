@@ -27,7 +27,7 @@
 							</thead>
 							<tbody>
 
-								@foreach($news as $post)
+								@forelse($news as $post)
 
 									<tr>
 										<td>{{ ++$i }}</td>
@@ -52,13 +52,26 @@
 										</td>
 									</tr>
 
-								@endforeach
+								@empty
+
+									<tr>
+										<td>
+											No records found
+										</td>
+									</tr>
+
+								@endforelse
 
 							</tbody>
 						</table>
-					</div>
-				</div>
 
+						<div class="pull-right">
+							{{ $news->links() }}
+						</div>
+
+					</div>
+
+				</div>
 			</div>
 		</div>
 

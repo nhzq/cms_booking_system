@@ -12,7 +12,15 @@
         $post = App\Homepage::first();
     @endphp
 
-    <title>{{ $post->company_name }}</title>
+    @if(count($post) > 0)
+
+        <title>{{ $post->company_name }}</title>
+
+    @else
+
+        <title>No records found</title>
+
+    @endif
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -39,7 +47,15 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
 
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">{{ $post->company_name }}</a>
+            @if(count($post) > 0)
+
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">{{ $post->company_name }}</a>
+
+            @else
+
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">No records found</a>
+
+            @endif
             
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -73,7 +89,16 @@
 
     <section class="bg-dark text-white" style="padding:10px;">
         <div class="container text-center">
-            <h6 class="mb-4" style="margin-top: 12px;">{{ $post->company_name }} &copy; <?php echo date("Y"); ?> Copyright.</h6>
+
+            @if(count($post) > 0)
+
+                <h6 class="mb-4" style="margin-top: 12px;">{{ $post->company_name }} &copy; <?php echo date("Y"); ?> Copyright.</h6>
+
+            @else
+
+                <h6 class="mb-4" style="margin-top: 12px;">No records found &copy; <?php echo date("Y"); ?> Copyright.</h6>
+
+            @endif
         </div>
     </section>
 

@@ -27,12 +27,6 @@ class HomepageController extends Controller
     {
         $post = Homepage::all();
 
-        if($post->count() > 0) {
-            Session::flash("info", "You already have a post. Please edit and update the post instead of creating a new post");
-
-            return redirect()->route('homepage.index');
-        }
-
         return view('admin.homepage.create');
     }
 

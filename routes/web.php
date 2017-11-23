@@ -58,9 +58,18 @@ Route::post('/contact/send', [
 
 Auth::routes();
 
-Route::get('/admin', 'HomeController@index');
-
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+
+	/*
+	|---------------------------
+	| Dashboard features
+	|---------------------------
+	*/
+
+	Route::get('/', [
+		'uses' => 'HomeController@index',
+		'as' => 'home.index'
+	]);
 
 	/*
 	|---------------------------
@@ -205,6 +214,44 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 	Route::get('news/kill/{id}', [
 		'uses' => 'NewsPostController@kill',
 		'as' => 'news.kill'
+	]);
+
+
+	/*
+	|---------------------------
+	| Category features
+	|---------------------------
+	*/
+
+	Route::get('/category', [
+		'uses' => 'CategoryController@index',
+		'as' => 'category.index' 
+	]);
+
+	Route::get('/category/create', [
+		'uses' => 'CategoryController@create',
+		'as' => 'category.create' 
+	]);
+
+	Route::post('/category/store', [
+		'uses' => 'CategoryController@store',
+		'as' => 'category.store' 
+	]);
+
+
+	/*
+	|---------------------------
+	| Subcategory features
+	|---------------------------
+	*/
+	Route::get('/subcategory/create', [
+		'uses' => 'SubcategoryController@create',
+		'as' => 'subcategory.create' 
+	]);
+
+	Route::post('/subcategory/store', [
+		'uses' => 'SubcategoryController@store',
+		'as' => 'subcategory.store' 
 	]);
 });
 

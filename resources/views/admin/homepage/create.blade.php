@@ -33,6 +33,29 @@
 			    			<textarea name="headline_brief" class="form-control" cols="3" rows="3"></textarea>
 			    		</div>
 
+			    		<div class="row">
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="header_image">Slide Image 1</label>
+									<input type="file" name="header_image" class="form-control">
+								</div>
+							</div>
+							
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="header_image_2">Slide Image 2</label>
+									<input type="file" name="header_image_2" class="form-control">
+								</div>
+							</div>
+
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="header_image_3">Slide Image 3</label>
+									<input type="file" name="header_image_3" class="form-control">
+								</div>
+							</div>
+						</div>
+
 					</div>
 
 				</div>

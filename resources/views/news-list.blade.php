@@ -83,7 +83,7 @@
 	            </div>
 	        </div>
 
-	        @foreach($news as $post)
+	        @forelse($news as $post)
 
 				<div class="row">
 					<div class="col-md-8">
@@ -108,13 +108,23 @@
 					</div>
 				</div>
 
-			@endforeach
+			@empty
 
-			<div class="col-md-8">
-				<div class="pull-right">
-					{{ $news->links() }}
+				<div class="row">
+					<div class="col-md-8">
+						<!-- Blog Post -->
+						<div class="card mb-4">
+
+							<div class="card-body">
+								<h2 class="card-title">No records found</h2>
+								<p class="card-text">No records found</p>
+							</div>
+
+						</div>
+					</div>
 				</div>
-			</div>
+
+			@endforelse
 
 		</div>
 	</section>

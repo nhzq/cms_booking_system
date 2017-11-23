@@ -67,8 +67,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                
+                @if(count($post) > 0)
 
-                <a class="navbar-brand" href="index.html">{{ $post->company_name }}</a>
+                    <a class="navbar-brand" href="index.html">{{ $post->company_name }}</a>
+
+                @else
+
+                    <a class="navbar-brand" href="index.html">No records found</a>
+
+                @endif
 
             </div>
             <!-- /.navbar-header -->
@@ -112,18 +120,24 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        {{-- <li>
-                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li> --}}
+                        <li>
+                            <a href="{{ route('home.index') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Homepage<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{ route('homepage.index') }}">List</a>
                                 </li>
-                                <li>
-                                    <a href="{{ route('homepage.create') }}">Create</a>
-                                </li>
+
+                                @if(count($post) == 0)
+
+                                    <li>
+                                        <a href="{{ route('homepage.create') }}">Create</a>
+                                    </li>
+
+                                @endif
+
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
@@ -133,9 +147,15 @@
                                 <li>
                                     <a href="{{ route('about.index') }}">List</a>
                                 </li>
-                                <li>
-                                    <a href="{{ route('about.create') }}">Create</a>
-                                </li>
+
+                                @if(count($post) == 0)
+
+                                    <li>
+                                        <a href="{{ route('about.create') }}">Create</a>
+                                    </li>
+
+                                @endif
+
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
@@ -145,9 +165,15 @@
                                 <li>
                                     <a href="{{ route('service.index') }}">List</a>
                                 </li>
-                                <li>
-                                    <a href="{{ route('service.create') }}">Create</a>
-                                </li>
+
+                                @if(count($post) == 0)
+
+                                    <li>
+                                        <a href="{{ route('service.create') }}">Create</a>
+                                    </li>
+
+                                @endif
+                                
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
@@ -166,6 +192,30 @@
                                 <li>
                                     <a href="{{ route('news.trashed') }}">Trashed</a>
                                 </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Training Categories<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ route('category.index') }}">List</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('category.create') }}">Create Category</a>
+                                </li>
+
+                                @php
+                                    $cat = App\Category::all();
+                                @endphp
+
+                                @if(count($cat) > 0)
+
+                                    <li>
+                                        <a href="{{ route('subcategory.create') }}">Create SubCategory</a>
+                                    </li>
+
+                                @endif
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
@@ -202,6 +252,8 @@
     <script src="{{ asset('vendor-admin/raphael/raphael.min.js') }}"></script>
     <script src="{{ asset('vendor-admin/morrisjs/morris.min.js') }}"></script>
 
+    <script src="{{ asset('vendor-admin/bootstrap-growl/bootstrapGrowl.min.js') }}"></script>
+
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('dist/js/sb-admin-2.js') }}"></script>
 
@@ -211,6 +263,24 @@
     @yield('script')
 
     <script>
+
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
 
         @if(Session::has('success'))
             toastr.success("{{ Session::get('success') }}");

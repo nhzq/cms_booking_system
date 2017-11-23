@@ -15,9 +15,8 @@ class NewsPostController extends Controller
      */
     public function index()
     {
-
         return view('admin.news.index')
-            ->with('news', Newspost::orderBy('created_at', 'desc')->get())
+            ->with('news', Newspost::orderBy('created_at', 'desc')->paginate(7))
             ->with('i');
     }
 
@@ -146,7 +145,9 @@ class NewsPostController extends Controller
     {
         $trashed = Newspost::onlyTrashed()->get();
 
-        return view('admin.news.trashed')->with('trashed', $trashed);
+        return view('admin.news.trashed')
+            ->with('i')
+            ->with('trashed', $trashed);
     }
 
     public function restore($id)

@@ -12,7 +12,7 @@
 						</h3>
 					</div>
 
-					@foreach($service as $data)
+					@forelse($service as $data)
 
 						<div class="panel-body">
 
@@ -23,7 +23,18 @@
 
 						</div>
 
-					@endforeach
+					@empty
+
+						<div class="panel-body">
+
+							<div class="col-md-12">
+								<p><span class="label label-info" style="font-size: 12px;">Introduction</span></p>
+								<div class="well well-sm">No records found</div>
+							</div>
+
+						</div>
+
+					@endforelse
 
 				</div>
 			</div>
@@ -37,7 +48,7 @@
 						</h3>
 					</div>
 
-					@foreach($service as $data)
+					@forelse($service as $data)
 
 						<div class="panel-body">
 
@@ -48,7 +59,18 @@
 						
 						</div>
 
-					@endforeach
+					@empty
+
+						<div class="panel-body">
+
+							<div class="col-md-12">
+								<p><span class="label label-info" style="font-size: 12px;">Body</span></p>
+								<div class="well well-sm">No records found</div>
+							</div>
+						
+						</div>
+
+					@endforelse
 
 				</div>
 			</div>

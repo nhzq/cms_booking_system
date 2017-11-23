@@ -72,4 +72,6 @@ class FrontEndController extends Controller
             $message->subject('Enquiry about project');
         });
     }
+
+
 }

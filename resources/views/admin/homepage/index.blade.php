@@ -12,7 +12,7 @@
 						</h3>
 					</div>
 
-					@foreach($homepage as $data)
+					@forelse($homepage as $data)
 						
 						<div class="panel-body">
 
@@ -33,7 +33,28 @@
 
 						</div>
 
-					@endforeach
+					@empty
+
+						<div class="panel-body">
+
+							<div class="col-md-12">
+								<p><span class="label label-info" style="font-size: 12px;">Company Name</span></p>
+								<div class="well well-sm">No records found</div>
+							</div>
+						
+							<div class="col-md-12">
+								<p><span class="label label-info" style="font-size: 12px;">Headline</span></p>
+								<div class="well well-sm">No records found</div>
+							</div>
+						
+							<div class="col-md-12">
+								<p><span class="label label-info" style="font-size: 12px;">Brief explanation about headline</span></p>
+								<div class="well well-sm">No records found</div>
+							</div>
+
+						</div>
+
+					@endforelse
 
 				</div>
 			</div>
@@ -47,7 +68,7 @@
 						</h3>
 					</div>
 
-					@foreach($homepage as $data)
+					@forelse($homepage as $data)
 
 						<div class="panel-body">
 
@@ -58,7 +79,18 @@
 						
 						</div>
 
-					@endforeach
+					@empty
+
+						<div class="panel-body">
+
+							<div class="col-md-12">
+								<p><span class="label label-info" style="font-size: 12px;">Brief explanation about services</span></p>
+								<div class="well well-sm">No records found</div>
+							</div>
+						
+						</div>
+
+					@endforelse
 
 				</div>
 			</div>
@@ -72,7 +104,7 @@
 						</h3>
 					</div>
 
-					@foreach($homepage as $data)
+					@forelse($homepage as $data)
 						
 						<div class="panel-body">
 
@@ -98,7 +130,33 @@
 						
 						</div>
 
-					@endforeach
+					@empty
+
+						<div class="panel-body">
+
+							<div class="col-md-12">
+								<p><span class="label label-info" style="font-size: 12px;">1. Company's strength</span></p>
+								<div class="well well-sm">No records found</div>
+							</div>
+
+							<div class="col-md-12">
+								<p><span class="label label-info" style="font-size: 12px;">2. Company's strength</span></p>
+								<div class="well well-sm">No records found</div>
+							</div>
+
+							<div class="col-md-12">
+								<p><span class="label label-info" style="font-size: 12px;">3. Company's strength</span></p>
+								<div class="well well-sm">No records found</div>
+							</div>
+
+							<div class="col-md-12">
+								<p><span class="label label-info" style="font-size: 12px;">4. Company's strength</span></p>
+								<div class="well well-sm">No records found</div>
+							</div>
+						
+						</div>
+
+					@endforelse
 
 				</div>
 			</div>
@@ -112,7 +170,7 @@
 						</h3>
 					</div>
 
-					@foreach($homepage as $data)
+					@forelse($homepage as $data)
 
 						<div class="panel-body">
 
@@ -128,7 +186,23 @@
 						
 						</div>
 
-					@endforeach
+					@empty
+
+						<div class="panel-body">
+
+							<div class="col-md-12">
+								<p><span class="label label-info" style="font-size: 12px;">Phone number</span></p>
+								<div class="well well-sm">No records found</div>
+							</div>
+
+							<div class="col-md-12">
+								<p><span class="label label-info" style="font-size: 12px;">Email</span></p>
+								<div class="well well-sm">No records found</div>
+							</div>
+						
+						</div>
+
+					@endforelse
 
 				</div>
 			</div>

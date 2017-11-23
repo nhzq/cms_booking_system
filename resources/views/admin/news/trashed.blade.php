@@ -17,9 +17,10 @@
 						<table class="table table-hover">
 							<thead>
 								<tr>
+									<th>No</th>
 									<th>Image</th>
 									<th>Title</th>
-									<th>Edit</th>
+									<th>Restore</th>
 									<th>Delete</th>
 								</tr>
 							</thead>
@@ -36,7 +37,18 @@
 								@foreach($trashed as $post)
 
 									<tr>
-										<td>John</td>
+										<td>{{ ++$i }}</td>
+
+										@if(count($post->image) > 0)
+
+											<td><img src="{{ asset('img/postImage/' . $post->image) }}" style="max-width: 70px;"></td>
+
+										@else
+
+											<td>No image</td>
+
+										@endif
+
 										<td>{{ $post->title }}</td>
 										<td>
 											<a href="{{ route('news.restore', ['id' => $post->id]) }}" class="btn btn-success">Restore</a>
