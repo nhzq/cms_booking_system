@@ -244,6 +244,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 	| Subcategory features
 	|---------------------------
 	*/
+
 	Route::get('/subcategory/create', [
 		'uses' => 'SubcategoryController@create',
 		'as' => 'subcategory.create' 
@@ -252,6 +253,56 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 	Route::post('/subcategory/store', [
 		'uses' => 'SubcategoryController@store',
 		'as' => 'subcategory.store' 
+	]);
+
+
+	/*
+	|---------------------------
+	| Location features
+	|---------------------------
+	*/
+
+	Route::get('/location', [
+		'uses' => 'LocationController@index',
+		'as' => 'location.index'
+	]);
+
+	Route::get('/location/create', [
+		'uses' => 'LocationController@create',
+		'as' => 'location.create'
+	]);
+
+	Route::post('/location/store', [
+		'uses' => 'LocationController@store',
+		'as' => 'location.store'
+	]);
+
+
+
+	/*
+	|---------------------------
+	| Training features
+	|---------------------------
+	*/
+
+	Route::get('/training', [
+		'uses' => 'TrainingController@index',
+		'as' => 'training.index'
+	]);
+
+	Route::get('training/create', [
+		'uses' => 'TrainingController@create',
+		'as' => 'training.create'
+	]);
+
+	Route::get('/ajax-subcat', [
+		'uses' => 'AjaxController@subcat',
+		'as' => 'training.subcat'
+	]);
+
+	Route::post('/training/store', [
+		'uses' => 'TrainingController@store',
+		'as' => 'training.store'
 	]);
 });
 

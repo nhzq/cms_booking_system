@@ -178,7 +178,28 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Training</a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Training<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ route('training.index') }}">List</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('training.create') }}">Create</a>
+                                </li>
+
+                                {{-- @php
+                                    $cat = App\Category::all();
+                                @endphp
+
+                                @if(count($cat) > 0)
+
+                                    <li>
+                                        <a href="{{ route('subcategory.create') }}">Create SubCategory</a>
+                                    </li>
+
+                                @endif --}}
+                            </ul>
+                            <!-- /.nav-second-level -->
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> News<span class="fa arrow"></span></a>
@@ -216,6 +237,18 @@
                                     </li>
 
                                 @endif
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Training Location<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ route('location.index') }}">List</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('location.create') }}">Create</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
