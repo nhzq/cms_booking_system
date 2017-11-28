@@ -34,7 +34,7 @@
 
 										@if(count($post->image) > 0)
 
-											<td><img src="{{ asset('img/postImage/' . $post->image) }}" style="max-width: 70px;"></td>
+											<td><img src="{{ asset($post->image) }}" style="max-width: 70px;"></td>
 
 										@else
 

@@ -25,13 +25,6 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        $service = Service::all();
-
-        if($service->count() > 0) {
-            Session::flash('info', "You already have a post. Please edit and update the post instead of creating a new post");
-
-            return redirect()->route('service.index');
-        }
         return view('admin.service.create');
     }
 
@@ -122,7 +115,7 @@ class ServiceController extends Controller
             $intro_image->move('img/serviceImage', $image_name);
 
             //Get the item with new name
-            $service->intro_image = $image_name;
+            $service->intro_image = 'img/serviceImage/' . $image_name;
         }
 
         if($request->hasFile('body_image')) {
@@ -137,7 +130,7 @@ class ServiceController extends Controller
             $body_image->move('img/serviceImage', $image_name_body);
 
             //Get the item with new name
-            $service->body_image = $image_name_body;
+            $service->body_image = 'img/serviceImage/' . $image_name_body;
         }
         
 

@@ -111,7 +111,7 @@ class NewsPostController extends Controller
             $image->move('img/postImage', $image_name);
 
             //Get the item with new name
-            $news->image = $image_name;
+            $news->image = 'img/postImage/' . $image_name;
         }
 
         $news->title = $request->title;

@@ -152,7 +152,7 @@ class HomepageController extends Controller
             $header_image->move('img/homeImage', $image_name);
 
             //Get the item with new name
-            $homepage->header_image = $image_name;
+            $homepage->header_image = 'img/homeImage/' . $image_name;
         }
 
         if($request->hasFile('header_image_2')) {
@@ -167,7 +167,7 @@ class HomepageController extends Controller
             $header_image_2->move('img/homeImage', $image_name_2);
 
             //Get the item with new name
-            $homepage->header_image_2 = $image_name_2;
+            $homepage->header_image_2 = 'img/homeImage/' . $image_name_2;
         }
 
         if($request->hasFile('header_image_3')) {
@@ -182,7 +182,7 @@ class HomepageController extends Controller
             $header_image_3->move('img/homeImage', $image_name_3);
 
             //Get the item with new name
-            $homepage->header_image_3 = $image_name_3;
+            $homepage->header_image_3 = 'img/homeImage/' . $image_name_3;
         }
 
         $homepage->company_name = $request->company_name;

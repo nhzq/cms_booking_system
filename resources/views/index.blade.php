@@ -32,18 +32,18 @@
 
                 @if(count($post) > 0)
 
-                    <div class="carousel-item active" style="background-image: url('{{ asset("img/homeImage/$post->header_image") }}')">
+                    <div class="carousel-item active" style="background-image: url('{{ asset($post->header_image) }}')">
                         <div class="carousel-caption d-none d-md-block" style="margin-bottom: 100px;">
                             <h3>{{ $post->headline }}</h3>
                             <p>{{ $post->headline_brief }}</p>
                         </div>
                     </div>
                     <!-- Slide Two - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('{{ asset("img/homeImage/$post->header_image_2") }}')">
+                    <div class="carousel-item" style="background-image: url('{{ asset($post->header_image_2) }}')">
                         <div class="carousel-caption d-none d-md-block" style="margin-bottom: 100px;"></div>
                     </div>
                     <!-- Slide Three - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('{{ asset("img/homeImage/$post->header_image_3") }}')">
+                    <div class="carousel-item" style="background-image: url('{{ asset($post->header_image_3) }}')">
                         <div class="carousel-caption d-none d-md-block" style="margin-bottom: 100px;"></div>
                     </div>
 

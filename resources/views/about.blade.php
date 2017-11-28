@@ -18,7 +18,7 @@
                 @if(count($about) > 0)
 
                 	<div class="col-md-6 text-center" style="margin: auto 0;">
-                        <a href=""><img src="{{ asset('img/aboutImage/' . $about->image_1) }}" class="img-fluid" style="min-width: 468px;"></a>
+                        <a href=""><img src="{{ asset($about->image_1) }}" class="img-fluid" style="min-width: 468px;"></a>
                     </div>
                     <div class="col-md-6" style="margin: auto 0;">
                     	<div class="col-lg-12 text-center">
@@ -64,7 +64,7 @@
                         </p>
                     </div>
                     <div class="col-md-6 text-center" style="margin: auto 0;">
-                        <a href=""><img src="{{ asset('img/aboutImage/' . $about->image_2) }}" class="img-fluid" style="min-width: 468px;"></a>
+                        <a href=""><img src="{{ asset($about->image_2) }}" class="img-fluid" style="min-width: 468px;"></a>
                     </div>
 
                 @else

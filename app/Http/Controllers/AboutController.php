@@ -25,14 +25,6 @@ class AboutController extends Controller
      */
     public function create()
     {
-        $post = About::all();
-
-        if($post->count() > 0) {
-            Session::flash('info', "You already have a post. Please edit and update the post instead of creating a new post");
-            
-            return redirect()->route('about.index');
-        }
-        
         return view('admin.about.create');
     }
 
@@ -128,7 +120,7 @@ class AboutController extends Controller
             $image_1->move('img/aboutImage', $image_name);
 
             //Get the item with new name
-            $about->image_1 = $image_name;
+            $about->image_1 = 'img/aboutImage/' . $image_name;
         }
 
         if($request->hasFile('image_2')) {
@@ -143,7 +135,7 @@ class AboutController extends Controller
             $image_2->move('img/aboutImage', $image_name_2);
 
             //Get the item with new name
-            $about->image_2 = $image_name_2;
+            $about->image_2 = 'img/aboutImage/' . $image_name_2;
         }
 
         $about->vision = $request->vision;

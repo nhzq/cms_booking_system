@@ -148,7 +148,11 @@
                                     <a href="{{ route('about.index') }}">List</a>
                                 </li>
 
-                                @if(count($post) == 0)
+                                @php
+                                    $about = App\About::first();
+                                @endphp
+
+                                @if(count($about) == 0)
 
                                     <li>
                                         <a href="{{ route('about.create') }}">Create</a>
@@ -166,7 +170,11 @@
                                     <a href="{{ route('service.index') }}">List</a>
                                 </li>
 
-                                @if(count($post) == 0)
+                                @php
+                                    $service =  App\Service::first();
+                                @endphp
+
+                                @if(count($service) == 0)
 
                                     <li>
                                         <a href="{{ route('service.create') }}">Create</a>
@@ -186,18 +194,6 @@
                                 <li>
                                     <a href="{{ route('training.create') }}">Create</a>
                                 </li>
-
-                                {{-- @php
-                                    $cat = App\Category::all();
-                                @endphp
-
-                                @if(count($cat) > 0)
-
-                                    <li>
-                                        <a href="{{ route('subcategory.create') }}">Create SubCategory</a>
-                                    </li>
-
-                                @endif --}}
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

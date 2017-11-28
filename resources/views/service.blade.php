@@ -10,7 +10,7 @@
                 <div class="row">
 
                 	<div class="col-md-6 text-center" style="margin: auto 0;">
-                        <a href=""><img src="{{ asset('img/serviceImage/' . $service->intro_image) }}" class="img-fluid" style="min-width: 468px;"></a>
+                        <a href=""><img src="{{ asset($service->intro_image) }}" class="img-fluid" style="min-width: 468px;"></a>
                     </div>
                     <div class="col-md-6" style="margin: auto 0;">
                     	<div class="col-lg-12 text-center">
@@ -57,7 +57,7 @@
 
                 <div class="row">
 
-                    <img src="{{ asset('img/serviceImage/' . $service->body_image) }}" class="img-fluid" style="margin: 0 auto; min-width: 900px;">
+                    <img src="{{ asset($service->body_image) }}" class="img-fluid" style="margin: 0 auto; min-width: 900px;">
 
                 </div>
 

@@ -92,7 +92,7 @@
 
 							@if(count($post->image) > 0)
 
-								<img class="card-img-top" src="{{ asset('img/postImage/' . $post->image) }}" style="max-width:750px;">
+								<img class="card-img-top" src="{{ asset($post->image) }}" style="max-width:750px;">
 
 							@endif
 

@@ -20,7 +20,7 @@
 					@if(count($post->image) > 0)
 						<br>
 						<br>
-						<img class="img-fluid rounded" src="{{ asset('img/postImage/' . $post->image) }}" style="max-width: 730px;">
+						<img class="img-fluid rounded" src="{{ asset($post->image) }}" style="max-width: 730px;">
 
 					@endif
 

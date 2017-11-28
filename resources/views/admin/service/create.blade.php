@@ -28,7 +28,7 @@
 
 						<div class="form-group">
 			    			<label for="intro">Introduction</label>
-			    			<textarea name="body" id="service-intro" class="form-control summernote" cols="3" rows="3"></textarea>
+			    			<textarea name="intro" id="service-intro" class="form-control summernote" cols="3" rows="3"></textarea>
 			    		</div>
 
 			    		<div class="col-md-4">
