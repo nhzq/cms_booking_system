@@ -35,6 +35,7 @@
 
 			</form>
 		</div>
+		<div class="hidden-space"></div>
 	</section>
 
 @endsection

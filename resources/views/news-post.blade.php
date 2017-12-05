@@ -7,7 +7,7 @@
 		<div class="row">
 
 		        <!-- Post Content Column -->
-		        <div class="col-lg-8">
+		        <div class="col-lg-8" style="word-wrap: break-word;">
 
 					<!-- Title -->
 					<h1 class="mt-4">{{ $post->title }}</h1>
@@ -20,7 +20,7 @@
 					@if(count($post->image) > 0)
 						<br>
 						<br>
-						<img class="img-fluid rounded" src="{{ asset($post->image) }}" style="max-width: 730px;">
+						<img class="img-fluid image-media rounded" src="{{ asset($post->image) }}">
 
 					@endif
 

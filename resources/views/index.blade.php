@@ -185,8 +185,8 @@
 
     <section class="bg-dark text-white">
         <div class="container text-center">
-            <h2 class="mb-4">Want to know more? Contact Us</h2>
-            <a class="btn btn-light btn-xl sr-button" href="{{ route('frontend.contact') }}">Download Now!</a>
+            <h2 class="mb-4">Want to know more?</h2>
+            <a class="btn btn-light btn-xl sr-button" href="{{ route('frontend.contact') }}">Contact Us!</a>
         </div>
     </section>
 

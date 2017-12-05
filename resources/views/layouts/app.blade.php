@@ -9,7 +9,19 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    @php
+        $post = App\Homepage::first();
+    @endphp
+
+    @if(count($post) > 0)
+
+        <title>{{ $post->company_name }}</title>
+
+    @else
+
+        <title>No records found</title>
+
+    @endif
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('vendor-admin/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -32,6 +44,8 @@
     <!-- Custom style -->
     <link href="{{ asset('style.css') }}" rel="stylesheet" type="text/css">
 
+    <link rel="shortcut icon" href="{{{ asset('img/compImage/favicon.ico') }}}">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -48,9 +62,7 @@
         ]); ?>
     </script>
 
-    @php
-        $post = App\Homepage::first();
-    @endphp
+    
 
 </head>
 
@@ -70,11 +82,11 @@
                 
                 @if(count($post) > 0)
 
-                    <a class="navbar-brand" href="index.html">{{ $post->company_name }}</a>
+                    <a class="navbar-brand" href="{{ route('home.index') }}">{{ $post->company_name }}</a>
 
                 @else
 
-                    <a class="navbar-brand" href="index.html">No records found</a>
+                    <a class="navbar-brand" href="{{ route('home.index') }}">No records found</a>
 
                 @endif
 
@@ -124,7 +136,7 @@
                             <a href="{{ route('home.index') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Homepage<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-home fa-fw"></i> Homepage<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{ route('homepage.index') }}">List</a>
@@ -142,7 +154,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> About us<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-object-group fa-fw"></i> About us<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{ route('about.index') }}">List</a>
@@ -164,7 +176,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-edit fa-fw"></i> Our Services<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-briefcase fa-fw"></i> Our Services<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{ route('service.index') }}">List</a>
@@ -185,7 +197,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Training<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -195,10 +207,10 @@
                                     <a href="{{ route('training.create') }}">Create</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+                            /.nav-second-level
+                        </li> --}}
                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> News<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-newspaper-o fa-fw"></i> News<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{ route('news.index') }}">List</a>
@@ -212,7 +224,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Training Categories<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -234,9 +246,9 @@
 
                                 @endif
                             </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
+                            /.nav-second-level
+                        </li> --}}
+                        {{-- <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Training Location<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -246,8 +258,8 @@
                                     <a href="{{ route('location.create') }}">Create</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+                            /.nav-second-level
+                        </li> --}}
                         {{-- <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Contact Us</a>
                         </li> --}}

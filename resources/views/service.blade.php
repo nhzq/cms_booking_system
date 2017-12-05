@@ -10,10 +10,10 @@
                 <div class="row">
 
                 	<div class="col-md-6 text-center" style="margin: auto 0;">
-                        <a href=""><img src="{{ asset($service->intro_image) }}" class="img-fluid" style="min-width: 468px;"></a>
+                        <a href=""><img src="{{ asset($service->intro_image) }}" class="img-fluid image-media"></a>
                     </div>
                     <div class="col-md-6" style="margin: auto 0;">
-                    	<div class="col-lg-12 text-center">
+                    	<div class="col-lg-12 text-center space-media">
     	                    <h2 class="section-heading">Our Service</h2>
     	                <hr class="my-4">
     	                </div>
@@ -29,10 +29,10 @@
                 <div class="row">
 
                     <div class="col-md-6 text-center" style="margin: auto 0;">
-                        <a href=""><img src="http://via.placeholder.com/700x468" class="img-fluid" style="min-width: 468px;"></a>
+                        <img src="http://via.placeholder.com/700x468" class="img-fluid image-media">
                     </div>
                     <div class="col-md-6" style="margin: auto 0;">
-                        <div class="col-lg-12 text-center">
+                        <div class="col-lg-12 text-center space-media">
                             <h2 class="section-heading">Our Service</h2>
                         <hr class="my-4">
                         </div>
@@ -56,17 +56,17 @@
             @if(count($service) > 0)
 
                 <div class="row">
-
-                    <img src="{{ asset($service->body_image) }}" class="img-fluid" style="margin: 0 auto; min-width: 900px;">
-
+                    <div class="col-md-12">
+                        <img src="{{ asset($service->body_image) }}" class="img-fluid image-media" style="margin: 0 auto;">
+                    </div>
                 </div>
 
             @else
 
                 <div class="row">
-
-                    <img src="http://via.placeholder.com/700x468" class="img-fluid" style="margin: 0 auto; min-width: 900px;">
-
+                    <div class="col-md-12">
+                        <img src="http://via.placeholder.com/700x468" class="img-fluid image-media" style="margin: 0 auto;">
+                    </div>
                 </div>
 
             @endif
@@ -84,7 +84,7 @@
                 @else
 
                     <div class="col-md-8 offset-2">
-                        No records found 
+                        No records found
                     </div>
 
                 @endif

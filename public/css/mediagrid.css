@@ -1,0 +1,44 @@
+@media (max-width: 768px) {
+
+	/*Hide img/icon/any element*/
+	.hide-media {
+		display: none !important;
+	}
+	
+	/*Make image responsive*/
+	.image-media {
+		min-width: 100% !important;
+		height: auto !important;
+	}
+
+	/*Create top margin*/
+	.space-media {
+		margin-top: 20px !important;
+	}
+
+	/*Disable offset 2*/
+	.offset-2 {
+		margin-left: 2% !important;
+		margin-right: 2% !important;
+	}
+
+	.offset-3 {
+		margin-left: 2% !important;
+		margin-right: 2% !important;
+	}
+}
+
+@media (min-width: 768px) {
+
+	/*Make image responsive*/
+	.image-media {
+		min-width: 100%;
+		height: auto;
+	}
+}
+
+@media (min-width: 600px) and (max-width: 768px) {
+	.hidden-space {
+		height: 300px;
+	}
+}

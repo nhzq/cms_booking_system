@@ -29,6 +29,7 @@
     <link href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="{{{ asset('img/compImage/favicon.ico') }}}">
 
     <!-- Plugin CSS -->
     <link href="{{ asset('vendor/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
@@ -36,6 +37,8 @@
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/creative.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/mediagrid.css') }}" rel="stylesheet">
+
 
     @yield('css')
 
@@ -49,11 +52,17 @@
 
             @if(count($post) > 0)
 
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">{{ $post->company_name }}</a>
+                <a class="navbar-brand js-scroll-trigger" href="{{ route('frontend.index') }}">
+                    <img src="{{ asset('img/compImage/icon-nav.png') }}" class="hide-media" alt="" style="max-width: 40px; margin-right: 10px;">
+                    {{ $post->company_name }}
+                </a>
 
             @else
 
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">No records found</a>
+                <a class="navbar-brand js-scroll-trigger" href="{{ route('frontend.index') }}">
+                    <img src="{{ asset('img/compImage/icon-nav.png') }}" class="hide-media" alt="" style="max-width: 40px; margin-right: 10px;">
+                    No records found
+                </a>
 
             @endif
             
@@ -71,9 +80,12 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('frontend.service') }}">Our Service</a>
                     </li>
-                    <li class="nav-item">
+
+                    <!-- Training Events-->
+                    {{-- <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="">Training &amp Events</a>
-                    </li>
+                    </li> --}}
+                    <!-- /Training Events-->
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('frontend.news') }}">News &amp Media</a>
                     </li>

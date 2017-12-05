@@ -24,6 +24,11 @@
     <div id="app">
         <div class="container">
             <div class="row">
+                <div class="col-md-2 col-md-offset-5" style="margin-top: 40px; margin-bottom: 20px;">
+                    <img src="{{ asset('img/compImage/icon-login.png') }}" alt="">
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="panel panel-default">
                         <div class="panel-heading">Login</div>
@@ -59,7 +64,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <div class="col-md-6 col-md-offset-4">
                                         <div class="checkbox">
                                             <label>
@@ -67,7 +72,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group">
                                     <div class="col-md-8 col-md-offset-4">
@@ -75,9 +80,9 @@
                                             Login
                                         </button>
 
-                                        <a class="btn btn-link" href="{{ url('/password/reset') }}">
+                                       {{--  <a class="btn btn-link" href="{{ url('/password/reset') }}">
                                             Forgot Your Password?
-                                        </a>
+                                        </a> --}}
                                     </div>
                                 </div>
                             </form>

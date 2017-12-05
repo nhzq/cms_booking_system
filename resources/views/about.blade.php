@@ -18,10 +18,10 @@
                 @if(count($about) > 0)
 
                 	<div class="col-md-6 text-center" style="margin: auto 0;">
-                        <a href=""><img src="{{ asset($about->image_1) }}" class="img-fluid" style="min-width: 468px;"></a>
+                        <a href=""><img src="{{ asset($about->image_1) }}" class="img-fluid image-media"></a>
                     </div>
                     <div class="col-md-6" style="margin: auto 0;">
-                    	<div class="col-lg-12 text-center">
+                    	<div class="col-lg-12 text-center space-media">
     	                    <h2 class="section-heading">Vision</h2>
     	                <hr class="my-4">
     	                </div>
@@ -33,10 +33,10 @@
                 @else
                     
                     <div class="col-md-6 text-center" style="margin: auto 0;">
-                        <a href=""><img src="http://via.placeholder.com/1900x1267" class="img-fluid" style="min-width: 468px;"></a>
+                        <a href=""><img src="http://via.placeholder.com/700x468" class="img-fluid image-media"></a>
                     </div>
                     <div class="col-md-6" style="margin: auto 0;">
-                        <div class="col-lg-12 text-center">
+                        <div class="col-lg-12 text-center space-media">
                             <h2 class="section-heading">Vision</h2>
                         <hr class="my-4">
                         </div>
@@ -64,7 +64,7 @@
                         </p>
                     </div>
                     <div class="col-md-6 text-center" style="margin: auto 0;">
-                        <a href=""><img src="{{ asset($about->image_2) }}" class="img-fluid" style="min-width: 468px;"></a>
+                        <a href=""><img src="{{ asset($about->image_2) }}" class="img-fluid image-media space-media"></a>
                     </div>
 
                 @else
@@ -79,7 +79,7 @@
                         </p>
                     </div>
                     <div class="col-md-6 text-center" style="margin: auto 0;">
-                        <a href=""><img src="http://via.placeholder.com/1900x1267" class="img-fluid" style="min-width: 468px;"></a>
+                        <a href=""><img src="http://via.placeholder.com/700x468" class="img-fluid  space-media image-media"></a>
                     </div>
 
                 @endif
@@ -102,7 +102,7 @@
             @else
 
                 <div class="col-md-8 offset-2 text-center">
-                    No records found
+                    No records
                 </div>
 
             @endif
