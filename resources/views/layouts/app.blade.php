@@ -11,6 +11,7 @@
 
     @php
         $post = App\Homepage::first();
+        $user = \Auth::user()->name;
     @endphp
 
     @if(count($post) > 0)
@@ -82,11 +83,11 @@
                 
                 @if(count($post) > 0)
 
-                    <a class="navbar-brand" href="{{ route('home.index') }}">{{ $post->company_name }}</a>
+                    <a class="navbar-brand" href="{{ route('home.route') }}">{{ $post->company_name }}</a>
 
                 @else
 
-                    <a class="navbar-brand" href="{{ route('home.index') }}">No records found</a>
+                    <a class="navbar-brand" href="{{ route('home.route') }}">No records found</a>
 
                 @endif
 
@@ -96,7 +97,7 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                        <p><i class="fa fa-user fa-fw"></i> {{ $user }} <i class="fa fa-caret-down"></i></p>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <!-- <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
@@ -131,139 +132,9 @@
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li>
-                            <a href="{{ route('home.index') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-home fa-fw"></i> Homepage<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{ route('homepage.index') }}">List</a>
-                                </li>
 
-                                @if(count($post) == 0)
-
-                                    <li>
-                                        <a href="{{ route('homepage.create') }}">Create</a>
-                                    </li>
-
-                                @endif
-
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-object-group fa-fw"></i> About us<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{ route('about.index') }}">List</a>
-                                </li>
-
-                                @php
-                                    $about = App\About::first();
-                                @endphp
-
-                                @if(count($about) == 0)
-
-                                    <li>
-                                        <a href="{{ route('about.create') }}">Create</a>
-                                    </li>
-
-                                @endif
-
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-briefcase fa-fw"></i> Our Services<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{ route('service.index') }}">List</a>
-                                </li>
-
-                                @php
-                                    $service =  App\Service::first();
-                                @endphp
-
-                                @if(count($service) == 0)
-
-                                    <li>
-                                        <a href="{{ route('service.create') }}">Create</a>
-                                    </li>
-
-                                @endif
-                                
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        {{-- <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Training<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{ route('training.index') }}">List</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('training.create') }}">Create</a>
-                                </li>
-                            </ul>
-                            /.nav-second-level
-                        </li> --}}
-                        <li>
-                            <a href="#"><i class="fa fa-newspaper-o fa-fw"></i> News<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{ route('news.index') }}">List</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('news.create') }}">Create</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('news.trashed') }}">Trashed</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        {{-- <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Training Categories<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{ route('category.index') }}">List</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('category.create') }}">Create Category</a>
-                                </li>
-
-                                @php
-                                    $cat = App\Category::all();
-                                @endphp
-
-                                @if(count($cat) > 0)
-
-                                    <li>
-                                        <a href="{{ route('subcategory.create') }}">Create SubCategory</a>
-                                    </li>
-
-                                @endif
-                            </ul>
-                            /.nav-second-level
-                        </li> --}}
-                        {{-- <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Training Location<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{{ route('location.index') }}">List</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('location.create') }}">Create</a>
-                                </li>
-                            </ul>
-                            /.nav-second-level
-                        </li> --}}
-                        {{-- <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Contact Us</a>
-                        </li> --}}
-                    </ul>
+                    @yield('layoutRole')
+                    
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>

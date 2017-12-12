@@ -38,6 +38,19 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
+    protected function authenticated($request, $user)
+    {
+        if($user->hasRole('Super Admin')) {
+            return redirect()->route('superadmin.index');
+        } 
+        else if($user->hasRole('Web Admin')) {
+            return redirect()->route('webadmin.index');
+        } 
+        else if($user->hasRole('System Admin')) {
+            return redirect()->route('systemadmin.index');
+        }
+    }
+
     public function logout(Request $request)
     {
         $this->guard()->logout();

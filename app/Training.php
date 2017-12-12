@@ -6,12 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Training extends Model
 {
-    protected $dates = ['training_date'];
+    protected $dates = ['start_date', 'end_date'];
     protected $fillable = [
     	'category_id',
     	'subcategory_id',
     	'location_id',
-    	'training_date'
+    	'start_date',
+        'end_date'
     ];
 
     public function category()

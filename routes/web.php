@@ -17,9 +17,7 @@
 | FrontEnd features
 |---------------------------
 */
-// Route::get('/', function () {
-//     return view('index');
-// });
+
 Route::get('/', [
 	'uses' => 'FrontEndController@index',
 	'as' => 'frontend.index'
@@ -58,18 +56,48 @@ Route::post('/contact/send', [
 
 Auth::routes();
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+Route::get('/home', [
+	'uses' => 'HomeController@routeForRole',
+	'as' => 'home.route'
+]);
 
-	/*
-	|---------------------------
-	| Dashboard features
-	|---------------------------
-	*/
+Route::get('/admin', [
+	'uses' => 'HomeController@routeForRole',
+	'as' => 'home.route'
+]);
+
+/*
+|---------------------------
+| Super Admin Route
+|---------------------------
+*/
+Route::group(['prefix' => 'superadmin', 'middleware' => 'auth'], function() {
 
 	Route::get('/', [
-		'uses' => 'HomeController@index',
-		'as' => 'home.index'
+		'uses' => 'SuperAdmin\SuperAdminController@index',
+		'as' => 'superadmin.index',
+		'middleware' => 'roles',
+		'roles' => ['Super Admin']
+		
 	]);
+});
+
+
+/*
+|---------------------------
+| Web Admin Route
+|---------------------------
+*/
+Route::group(['prefix' => 'webadmin', 'middleware' => 'auth'], function() {
+
+	Route::get('/', [
+		'uses' => 'WebAdmin\WebAdminController@index',
+		'as' => 'webadmin.index',
+		'middleware' => 'roles',
+		'roles' => ['Web Admin']
+		
+	]);
+
 
 	/*
 	|---------------------------
@@ -78,29 +106,40 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 	*/
 
 	Route::get('/homepage', [
-	    'uses' => 'HomepageController@index',
-	    'as' => 'homepage.index'
+	    'uses' => 'WebAdmin\HomepageController@index',
+	    'as' => 'webadmin.homepage.index',
+	    'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
 
 	Route::get('/homepage/create', [
-	    'uses' => 'HomepageController@create',
-	    'as' => 'homepage.create'
+	    'uses' => 'WebAdmin\HomepageController@create',
+	    'as' => 'webadmin.homepage.create',
+	    'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
 
 	Route::post('/homepage/store', [
-	    'uses' => 'HomepageController@store',
-	    'as' => 'homepage.store'
+	    'uses' => 'WebAdmin\HomepageController@store',
+	    'as' => 'webadmin.homepage.store',
+	    'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
 
 	Route::get('/homepage/edit/{id}', [
-	    'uses' => 'HomepageController@edit',
-	    'as' => 'homepage.edit'
+	    'uses' => 'WebAdmin\HomepageController@edit',
+	    'as' => 'webadmin.homepage.edit',
+	    'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
 
 	Route::post('homepage/update/{id}', [
-		'uses' => 'HomepageController@update',
-		'as' => 'homepage.update'
+		'uses' => 'WebAdmin\HomepageController@update',
+		'as' => 'webadmin.homepage.update',
+		'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
+
 
 	/*
 	|---------------------------
@@ -109,60 +148,82 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 	*/
 
 	Route::get('/about-us', [
-		'uses' => 'AboutController@index',
-		'as' => 'about.index'
+		'uses' => 'WebAdmin\AboutController@index',
+		'as' => 'webadmin.about.index',
+		'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
 
 	Route::get('/about-us/create', [
-		'uses' => 'AboutController@create',
-		'as' => 'about.create'
+		'uses' => 'WebAdmin\AboutController@create',
+		'as' => 'webadmin.about.create',
+		'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
 
 	Route::post('/about-us/store', [
-		'uses' => 'AboutController@store',
-		'as' => 'about.store'
+		'uses' => 'WebAdmin\AboutController@store',
+		'as' => 'webadmin.about.store',
+		'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
 
 	Route::get('/about-us/edit/{id}', [
-		'uses' => 'AboutController@edit',
-		'as' => 'about.edit'
+		'uses' => 'WebAdmin\AboutController@edit',
+		'as' => 'webadmin.about.edit',
+		'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
 
 	Route::post('/about-us/update/{id}', [
-		'uses' => 'AboutController@update',
-		'as' => 'about.update'
+		'uses' => 'WebAdmin\AboutController@update',
+		'as' => 'webadmin.about.update',
+		'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
+
 
 	/*
 	|---------------------------
-	| service features
+	| Service features
 	|---------------------------
 	*/
 
 	Route::get('/service', [
-		'uses' => 'ServiceController@index',
-		'as' => 'service.index'
+		'uses' => 'WebAdmin\ServiceController@index',
+		'as' => 'webadmin.service.index',
+		'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
 
 	Route::get('/service/create', [
-		'uses' => 'ServiceController@create',
-		'as' => 'service.create'
+		'uses' => 'WebAdmin\ServiceController@create',
+		'as' => 'webadmin.service.create',
+		'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
 
 	Route::post('/service/store', [
-		'uses' => 'ServiceController@store',
-		'as' => 'service.store'
+		'uses' => 'WebAdmin\ServiceController@store',
+		'as' => 'webadmin.service.store',
+		'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
 
 	Route::get('/service/edit/{id}', [
-		'uses' => 'ServiceController@edit',
-		'as' => 'service.edit'
+		'uses' => 'WebAdmin\ServiceController@edit',
+		'as' => 'webadmin.service.edit',
+		'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
 
 	Route::post('/service/update/{id}', [
-		'uses' => 'ServiceController@update',
-		'as' => 'service.update'
+		'uses' => 'WebAdmin\ServiceController@update',
+		'as' => 'webadmin.service.update',
+		'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
+
 
 
 	/*
@@ -172,48 +233,81 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 	*/
 
 	Route::get('/news', [
-		'uses' => 'NewsPostController@index',
-		'as' => 'news.index'
+		'uses' => 'WebAdmin\NewsPostController@index',
+		'as' => 'webadmin.news.index'
 	]);
 
 	Route::get('/news/create', [
-		'uses' => 'NewsPostController@create',
-		'as' => 'news.create'
+		'uses' => 'WebAdmin\NewsPostController@create',
+		'as' => 'webadmin.news.create',
+		'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
 
 	Route::post('/news/store', [
-		'uses' => 'NewsPostController@store',
-		'as' => 'news.store'
+		'uses' => 'WebAdmin\NewsPostController@store',
+		'as' => 'webadmin.news.store',
+		'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
 
 	Route::get('/news/edit/{id}', [
-		'uses' => 'NewsPostController@edit',
-		'as' => 'news.edit'
+		'uses' => 'WebAdmin\NewsPostController@edit',
+		'as' => 'webadmin.news.edit',
+		'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
 
 	Route::post('news/update/{id}', [
-		'uses' => 'NewsPostController@update',
-		'as' => 'news.update'
+		'uses' => 'WebAdmin\NewsPostController@update',
+		'as' => 'webadmin.news.update',
+		'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
 
 	Route::get('news/delete/{id}', [
-		'uses' => 'NewsPostController@destroy',
-		'as' => 'news.delete'
+		'uses' => 'WebAdmin\NewsPostController@destroy',
+		'as' => 'webadmin.news.delete',
+		'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
 
 	Route::get('news/trashed', [
-		'uses' => 'NewsPostController@trashed',
-		'as' => 'news.trashed'
+		'uses' => 'WebAdmin\NewsPostController@trashed',
+		'as' => 'webadmin.news.trashed',
+		'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
 
 	Route::get('news/restore/{id}', [
-		'uses' => 'NewsPostController@restore',
-		'as' => 'news.restore'
+		'uses' => 'WebAdmin\NewsPostController@restore',
+		'as' => 'webadmin.news.restore',
+		'middleware' => 'roles',
+		'roles' => ['Web Admin']
 	]);
 
 	Route::get('news/kill/{id}', [
-		'uses' => 'NewsPostController@kill',
-		'as' => 'news.kill'
+		'uses' => 'WebAdmin\NewsPostController@kill',
+		'as' => 'webadmin.news.kill',
+		'middleware' => 'roles',
+		'roles' => ['Web Admin']
+	]);
+});
+
+
+/*
+|---------------------------
+| System Admin Route
+|---------------------------
+*/
+Route::group(['prefix' => 'systemadmin', 'middleware' => 'auth'], function() {
+
+	Route::get('/', [
+		'uses' => 'SystemAdmin\SystemAdminController@index',
+		'as' => 'systemadmin.index',
+		'middleware' => 'roles',
+		'roles' => ['System Admin']
+		
 	]);
 
 
@@ -224,18 +318,38 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 	*/
 
 	Route::get('/category', [
-		'uses' => 'CategoryController@index',
-		'as' => 'category.index' 
+		'uses' => 'SystemAdmin\CategoryController@index',
+		'as' => 'systemadmin.category.index',
+		'middleware' => 'roles',
+		'roles' => ['System Admin']
 	]);
 
 	Route::get('/category/create', [
-		'uses' => 'CategoryController@create',
-		'as' => 'category.create' 
+		'uses' => 'SystemAdmin\CategoryController@create',
+		'as' => 'systemadmin.category.create',
+		'middleware' => 'roles',
+		'roles' => ['System Admin']
 	]);
 
 	Route::post('/category/store', [
-		'uses' => 'CategoryController@store',
-		'as' => 'category.store' 
+		'uses' => 'SystemAdmin\CategoryController@store',
+		'as' => 'systemadmin.category.store',
+		'middleware' => 'roles',
+		'roles' => ['System Admin']
+	]);
+
+	Route::get('/category/edit/{id}', [
+		'uses' => 'SystemAdmin\CategoryController@edit',
+		'as' => 'systemadmin.category.edit',
+		'middleware' => 'roles',
+		'roles' => ['System Admin']
+	]);
+
+	Route::post('/category/update/{id}', [
+		'uses' => 'SystemAdmin\CategoryController@update',
+		'as' => 'systemadmin.category.update',
+		'middleware' => 'roles',
+		'roles' => ['System Admin']
 	]);
 
 
@@ -246,13 +360,31 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 	*/
 
 	Route::get('/subcategory/create', [
-		'uses' => 'SubcategoryController@create',
-		'as' => 'subcategory.create' 
+		'uses' => 'SystemAdmin\SubcategoryController@create',
+		'as' => 'systemadmin.subcategory.create',
+		'middleware' => 'roles',
+		'roles' => ['System Admin'] 
 	]);
 
 	Route::post('/subcategory/store', [
-		'uses' => 'SubcategoryController@store',
-		'as' => 'subcategory.store' 
+		'uses' => 'SystemAdmin\SubcategoryController@store',
+		'as' => 'systemadmin.subcategory.store',
+		'middleware' => 'roles',
+		'roles' => ['System Admin'] 
+	]);
+
+	Route::get('/subcategory/edit/{id}', [
+		'uses' => 'SystemAdmin\CategoryController@edit_sub',
+		'as' => 'systemadmin.subcategory.edit',
+		'middleware' => 'roles',
+		'roles' => ['System Admin']
+	]);
+
+	Route::post('/subcategory/update/{id}', [
+		'uses' => 'SystemAdmin\CategoryController@update_sub',
+		'as' => 'systemadmin.subcategory.update',
+		'middleware' => 'roles',
+		'roles' => ['System Admin']
 	]);
 
 
@@ -263,20 +395,39 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 	*/
 
 	Route::get('/location', [
-		'uses' => 'LocationController@index',
-		'as' => 'location.index'
+		'uses' => 'SystemAdmin\LocationController@index',
+		'as' => 'systemadmin.location.index',
+		'middleware' => 'roles',
+		'roles' => ['System Admin'] 
 	]);
 
 	Route::get('/location/create', [
-		'uses' => 'LocationController@create',
-		'as' => 'location.create'
+		'uses' => 'SystemAdmin\LocationController@create',
+		'as' => 'systemadmin.location.create',
+		'middleware' => 'roles',
+		'roles' => ['System Admin'] 
 	]);
 
 	Route::post('/location/store', [
-		'uses' => 'LocationController@store',
-		'as' => 'location.store'
+		'uses' => 'SystemAdmin\LocationController@store',
+		'as' => 'systemadmin.location.store',
+		'middleware' => 'roles',
+		'roles' => ['System Admin'] 
 	]);
 
+	Route::get('/location/edit/{id}', [
+		'uses' => 'SystemAdmin\LocationController@edit',
+		'as' => 'systemadmin.location.edit',
+		'middleware' => 'roles',
+		'roles' => ['System Admin'] 
+	]);
+
+	Route::post('/location/update/{id}', [
+		'uses' => 'SystemAdmin\LocationController@update',
+		'as' => 'systemadmin.location.update',
+		'middleware' => 'roles',
+		'roles' => ['System Admin'] 
+	]);
 
 
 	/*
@@ -286,25 +437,45 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 	*/
 
 	Route::get('/training', [
-		'uses' => 'TrainingController@index',
-		'as' => 'training.index'
+		'uses' => 'SystemAdmin\TrainingController@index',
+		'as' => 'systemadmin.training.index',
+		'middleware' => 'roles',
+		'roles' => ['System Admin'] 
 	]);
 
 	Route::get('training/create', [
-		'uses' => 'TrainingController@create',
-		'as' => 'training.create'
+		'uses' => 'SystemAdmin\TrainingController@create',
+		'as' => 'systemadmin.training.create',
+		'middleware' => 'roles',
+		'roles' => ['System Admin'] 
 	]);
 
 	Route::get('/ajax-subcat', [
 		'uses' => 'AjaxController@subcat',
-		'as' => 'training.subcat'
+		'as' => 'training.subcat',
+		'middleware' => 'roles',
+		'roles' => ['System Admin'] 
 	]);
 
 	Route::post('/training/store', [
-		'uses' => 'TrainingController@store',
-		'as' => 'training.store'
+		'uses' => 'SystemAdmin\TrainingController@store',
+		'as' => 'systemadmin.training.store',
+		'middleware' => 'roles',
+		'roles' => ['System Admin'] 
+	]);
+
+	Route::get('/training/edit/{id}', [
+		'uses' => 'SystemAdmin\TrainingController@edit',
+		'as' => 'systemadmin.training.edit',
+		'middleware' => 'roles',
+		'roles' => ['System Admin'] 
+	]);
+
+	Route::post('/training/update/{id}', [
+		'uses' => 'SystemAdmin\TrainingController@update',
+		'as' => 'systemadmin.training.update',
+		'middleware' => 'roles',
+		'roles' => ['System Admin'] 
 	]);
 });
-
-
 

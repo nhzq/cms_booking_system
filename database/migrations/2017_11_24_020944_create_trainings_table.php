@@ -18,7 +18,8 @@ class CreateTrainingsTable extends Migration
             $table->integer('category_id')->unsigned();
             $table->integer('subcategory_id')->unsigned();
             $table->integer('location_id')->unsigned();
-            $table->date('training_date');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories');

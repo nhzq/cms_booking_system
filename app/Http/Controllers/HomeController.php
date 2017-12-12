@@ -22,10 +22,23 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $post = Newspost::all();
 
-        return view('home')->with('post', $post);
+    public function routeForRole()
+    {
+
+        $user = \Auth::user()->name;
+
+        if($user == null) {
+            return redirect('/');
+        }
+        else if($user == 'Super Admin') {
+             return redirect()->route('superadmin.index');
+        } 
+        else if($user == 'Web Admin') {
+            return redirect()->route('webadmin.index');
+        } 
+        else if($user == 'System Admin') {
+            return redirect()->route('systemadmin.index');
+        }
     }
 }
