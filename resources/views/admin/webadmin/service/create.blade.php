@@ -32,15 +32,33 @@
 
 						<div class="panel-body">
 
-							<div class="form-group">
+							<div class="form-group {{ $errors->has('intro') ? 'has-error' : '' }}">
 				    			<label for="intro">Introduction</label>
 				    			<textarea name="intro" id="service-intro" class="form-control summernote" cols="3" rows="3"></textarea>
+
+				    			@if($errors->has('intro'))
+
+					    			<div class="text-danger">
+										Please insert introduction of service
+									</div>
+
+								@endif
+
 				    		</div>
 
 				    		<div class="col-md-4">
-								<div class="form-group">
+								<div class="form-group {{ $errors->has('intro_image') ? 'has-error' : '' }}">
 									<label for="intro_image">Image: Introduction</label>
 									<input type="file" name="intro_image" class="form-control">
+
+									@if($errors->has('intro_image'))
+
+						    			<div class="text-danger">
+											Please upload any relevant image
+										</div>
+
+									@endif
+
 								</div>
 							</div>
 
@@ -48,21 +66,6 @@
 
 					</div>
 				</div>
-
-				<!-- Error -->
-				@if(count($errors) > 0)
-
-					<div class="col-md-4" style="margin-top: 30px !important;">
-						<ul class="list-group">
-							@foreach($errors->all() as $error)
-								<li class="list-group-item text-danger">
-									{{ $error }}
-								</li>
-							@endforeach			
-						</ul>
-					</div>
-
-				@endif
 
 				<div class="col-md-8">
 					<div class="panel panel-primary">
@@ -75,15 +78,33 @@
 							
 						<div class="panel-body">
 
-							<div class="form-group">
+							<div class="form-group {{ $errors->has('body') ? 'has-error' : '' }}">
 				    			<label for="body">Body</label>
 				    			<textarea name="body" id="service-body" class="form-control summernote" cols="3" rows="3"></textarea>
+
+				    			@if($errors->has('body'))
+
+					    			<div class="text-danger">
+										Please insert any relevant content about services
+									</div>
+
+								@endif
+
 				    		</div>
 
 				    		<div class="col-md-4">
-								<div class="form-group">
+								<div class="form-group {{ $errors->has('body_image') ? 'has-error' : '' }}">
 									<label for="body_image">Image: Body</label>
 									<input type="file" name="body_image" class="form-control">
+
+									@if($errors->has('body_image'))
+
+						    			<div class="text-danger">
+											Please upload any relevant image
+										</div>
+
+									@endif
+								
 								</div>
 							</div>
 						

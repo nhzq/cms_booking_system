@@ -32,9 +32,18 @@
 
 						<div class="panel-body">
 
-							<div class="form-group">
+							<div class="form-group {{ $errors->has('intro') ? 'has-error' : '' }}">
 				    			<label for="intro">Introduction</label>
 				    			<textarea name="intro" id="service-intro" class="form-control summernote" cols="3" rows="3">{!! $service->intro !!}</textarea>
+
+				    			@if($errors->has('intro'))
+
+					    			<div class="text-danger">
+										Please insert introduction of service
+									</div>
+
+								@endif
+
 				    		</div>
 				    		
 							<div class="form-group">
@@ -47,21 +56,6 @@
 					</div>
 				</div>
 
-				<!-- Error -->
-				@if(count($errors) > 0)
-
-					<div class="col-md-4" style="margin-top: 30px !important;">
-						<ul class="list-group">
-							@foreach($errors->all() as $error)
-								<li class="list-group-item text-danger">
-									{{ $error }}
-								</li>
-							@endforeach			
-						</ul>
-					</div>
-
-				@endif
-
 				<div class="col-md-8">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
@@ -73,9 +67,18 @@
 							
 						<div class="panel-body">
 
-							<div class="form-group">
+							<div class="form-group {{ $errors->has('body') ? 'has-error' : '' }}">
 				    			<label for="body">Body</label>
 				    			<textarea name="body" id="service-body" class="form-control summernote" cols="3" rows="3">{{ $service->body }}</textarea>
+
+				    			@if($errors->has('body'))
+
+					    			<div class="text-danger">
+										Please insert any relevant content about services
+									</div>
+
+								@endif
+								
 				    		</div>
 
 							<div class="form-group">

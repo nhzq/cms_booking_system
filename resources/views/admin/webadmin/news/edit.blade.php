@@ -32,9 +32,18 @@
 
 						<div class="panel-body">
 
-							<div class="form-group">
+							<div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
 				    			<label for="title">Post Title</label>
 				    			<input type="text" name="title" class="form-control" value="{{ $news->title }}">
+
+				    			@if($errors->has('title'))
+
+					    			<div class="text-danger">
+										Please insert post title
+									</div>
+
+								@endif
+
 				    		</div>
 
 				    		<div class="form-group">
@@ -42,30 +51,24 @@
 								<input type="file" name="image" class="form-control">
 							</div>
 
-				    		<div class="form-group">
+				    		<div class="form-group {{ $errors->has('content') ? 'has-error' : '' }}">
 				    			<label for="content">Content</label>
 				    			<textarea name="content" id="news-content" class="form-control summernote" cols="3" rows="3">{{ $news->content }}</textarea>
+
+				    			@if($errors->has('content'))
+
+					    			<div class="text-danger">
+										Please insert post content
+									</div>
+
+								@endif
+
 				    		</div>
 
 						</div>
 
 					</div>
 				</div>
-
-				<!-- Error -->
-				@if(count($errors) > 0)
-
-					<div class="col-md-4" style="margin-top: 30px !important;">
-						<ul class="list-group">
-							@foreach($errors->all() as $error)
-								<li class="list-group-item text-danger">
-									{{ $error }}
-								</li>
-							@endforeach			
-						</ul>
-					</div>
-
-				@endif
 				
 				<div class="col-md-8" style="margin-bottom: 30px !important;">
 					<button class="btn btn-success pull-right" type="submit">

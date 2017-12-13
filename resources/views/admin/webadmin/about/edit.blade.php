@@ -31,9 +31,18 @@
 
 						<div class="panel-body">
 
-							<div class="form-group">
+							<div class="form-group {{ $errors->has('vision') ? 'has-error' : '' }}">
 				    			<label for="vision">Vision</label>
 				    			<textarea name="vision" id="about-vision" class="form-control summernote" cols="3" rows="3">{{ $about->vision }}</textarea>
+
+				    			@if($errors->has('vision'))
+
+					    			<div class="text-danger">
+										Please enter company's vision before save
+									</div>
+
+								@endif
+
 				    		</div>
 
 							<div class="form-group">
@@ -41,9 +50,18 @@
 								<input type="file" name="image_1" class="form-control">
 							</div>
 
-				    		<div class="form-group">
+				    		<div class="form-group {{ $errors->has('mission') ? 'has-error' : '' }}">
 				    			<label for="mission">Mission</label>
 				    			<textarea name="mission" id="about-mission" class="form-control summernote" cols="3" rows="3">{{ $about->mission }}</textarea>
+
+				    			@if($errors->has('mission'))
+
+					    			<div class="text-danger">
+										Please enter company's mission before save
+									</div>
+
+								@endif
+
 				    		</div>
 
 				    		<div class="form-group">
@@ -56,21 +74,6 @@
 					</div>
 				</div>
 
-				<!-- Error -->
-				@if(count($errors) > 0)
-
-					<div class="col-md-4" style="margin-top: 30px !important;">
-						<ul class="list-group">
-							@foreach($errors->all() as $error)
-								<li class="list-group-item text-danger">
-									{{ $error }}
-								</li>
-							@endforeach			
-						</ul>
-					</div>
-
-				@endif
-
 				<div class="col-md-8">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
@@ -82,9 +85,18 @@
 							
 						<div class="panel-body">
 
-							<div class="form-group">
+							<div class="form-group {{ $errors->has('body') ? 'has-error' : '' }}">
 				    			<label for="body">Briefly explain about your company</label>
 				    			<textarea name="body" id="about-body" class="form-control summernote" cols="3" rows="3">{{ $about->body }}</textarea>
+
+				    			@if($errors->has('body'))
+
+					    			<div class="text-danger">
+										Please insert brief explanation about company
+									</div>
+
+								@endif
+								
 				    		</div>
 						
 						</div>
