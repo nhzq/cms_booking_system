@@ -22,6 +22,10 @@ class FrontEndController extends Controller
         return view('index')->with('post', Homepage::first());
     }
 
+    /**
+     * Display about details.
+     *
+     */
     public function about()
     {
         return view('about')
@@ -29,16 +33,28 @@ class FrontEndController extends Controller
             ->with('about', About::first());
     }
     
+    /**
+     * Display service details.
+     *
+     */
     public function service()
     {
         return view('service')->with('service', Service::first());
     }
 
+    /**
+     * Display news details.
+     *
+     */
     public function news()
     {
         return view('news-list')->with('news', Newspost::orderBy('created_at', 'desc')->paginate(3));
     }
 
+    /**
+     * Display post details.
+     *
+     */
     public function newsPost($slug)
     {
         $post = Newspost::where('slug', $slug)->first();
@@ -46,12 +62,19 @@ class FrontEndController extends Controller
         return view('news-post')->with('post', $post);
     }
 
+    /**
+     * Display contact details.
+     *
+     */
     public function contact()
     {
         return view('contact');
     }
 
-    //For sending email
+    /**
+     * For sending email.
+     *
+     */
     public function contactSend(Request $request)
     {
         $this->validate($request, [
@@ -72,6 +95,5 @@ class FrontEndController extends Controller
             $message->subject('Enquiry about project');
         });
     }
-
 
 }

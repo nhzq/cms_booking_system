@@ -31,7 +31,7 @@
 										<tr>
 											<th>No</th>
 											<th>Category</th>
-											<th>Subcategory</th>
+											<th>Course</th>
 											<th>Start Date</th>
 											<th>End Date</th>
 											<th>Venue</th>

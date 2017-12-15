@@ -11,6 +11,17 @@
 |
 */
 
+/*
+|---------------------------
+| Test
+|---------------------------
+*/
+
+// Route::get('/test/create', [
+// 	'uses' => 'TestController@create',
+// 	'as' => 'test.create'
+// ]);
+
 
 /*
 |---------------------------
@@ -48,6 +59,28 @@ Route::get('/contact', [
 	'as' => 'frontend.contact'
 ]);
 
+
+/*
+|---------------------------
+| Event Page Route
+|---------------------------
+*/
+
+Route::get('/event', [
+	'uses' => 'EventController@index',
+	'as' => 'event.index'
+]);
+
+Route::get('/event/category/{id}/{slug}', [
+	'uses' => 'EventController@category',
+	'as' => 'event.category',
+]);
+
+/*
+|---------------------------
+|---------------------------
+*/
+
 Route::post('/contact/send', [
 	'uses' => 'FrontEndController@contactSend',
 	'as' => 'frontend.contact.send'
@@ -78,7 +111,48 @@ Route::group(['prefix' => 'superadmin', 'middleware' => 'auth'], function() {
 		'as' => 'superadmin.index',
 		'middleware' => 'roles',
 		'roles' => ['Super Admin']
-		
+	]);
+
+
+	/*
+	|---------------------------
+	| User features
+	|---------------------------
+	*/
+
+	Route::get('/user', [
+		'uses' => 'SuperAdmin\UserController@index',
+		'as' => 'superadmin.user.index',
+		'middleware' => 'roles',
+		'roles' => ['Super Admin']
+	]);
+
+	Route::get('/user/create', [
+		'uses' => 'SuperAdmin\UserController@create',
+		'as' => 'superadmin.user.create',
+		'middleware' => 'roles',
+		'roles' => ['Super Admin']
+	]);
+
+	Route::post('/user/store', [
+		'uses' => 'SuperAdmin\UserController@store',
+		'as' => 'superadmin.user.store',
+		'middleware' => 'roles',
+		'roles' => ['Super Admin']
+	]);
+
+	Route::get('/user/edit/{id}', [
+		'uses' => 'SuperAdmin\UserController@edit',
+		'as' => 'superadmin.user.edit',
+		'middleware' => 'roles',
+		'roles' => ['Super Admin']
+	]);
+
+	Route::post('/user/update/{id}', [
+		'uses' => 'SuperAdmin\UserController@update',
+		'as' => 'superadmin.user.update',
+		'middleware' => 'roles',
+		'roles' => ['Super Admin']
 	]);
 });
 
@@ -95,7 +169,6 @@ Route::group(['prefix' => 'webadmin', 'middleware' => 'auth'], function() {
 		'as' => 'webadmin.index',
 		'middleware' => 'roles',
 		'roles' => ['Web Admin']
-		
 	]);
 
 

@@ -17,7 +17,7 @@
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<h3 class="panel-title">
-								Add Training SubCategory
+								Add Training Course
 								<span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
 							</h3>
 						</div>
@@ -52,13 +52,13 @@
 							</div>
 
 							<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-				    			<label for="sub">SubCategory</label>
+				    			<label for="sub">Course</label>
 				    			<input type="text" class="form-control" name="name">
 
 				    			@if($errors->has('name'))
 
 					    			<div class="text-danger">
-										Please enter a subcategory before save
+										Please enter a course before save
 									</div>
 
 								@endif

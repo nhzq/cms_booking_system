@@ -157,7 +157,7 @@
 				});
 			});
 
-			$('#category').on('change', function() {
+			$('#category').on('click', function() {
 
 				var cat_id = $(this).val();
 				var op = " ";

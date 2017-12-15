@@ -49,6 +49,7 @@ class CategoryController extends Controller
 
         $category = Category::create([
             'name' => $request->name
+            'slug' => str_slug($request->name)
         ]);
 
         Session::flash('success', "Category has been saved");
@@ -95,6 +96,7 @@ class CategoryController extends Controller
 
         $category = Category::find($id);
         $category->name = $request->name;
+        $category->slug = str_slug($request->name);
         $category->save();
 
         return redirect()->route('systemadmin.category.index');

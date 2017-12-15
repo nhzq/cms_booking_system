@@ -1,3 +1,7 @@
+@php
+    $post = App\Homepage::first();
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +12,20 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
+    @if(count($post) > 0)
+
+        <title>{{ $post->company_name }}</title>
+
+    @else
+
+        <title>No records found</title>
+
+    @endif
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{{ asset('img/compImage/favicon.ico') }}}">
 
     <!-- Scripts -->
     <script>

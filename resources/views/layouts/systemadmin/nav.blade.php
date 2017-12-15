@@ -24,7 +24,7 @@
         </ul>
     </li>
     <li>
-        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Training Categories<span class="fa arrow"></span></a>
+        <a href="#"><i class="fa fa-sitemap fa-fw"></i> Categories/Course<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
             <li>
                 <a href="{{ route('systemadmin.category.index') }}">List</a>
@@ -36,7 +36,7 @@
             @if(count($cat) > 0)
 
                 <li>
-                    <a href="{{ route('systemadmin.subcategory.create') }}">Create SubCategory</a>
+                    <a href="{{ route('systemadmin.subcategory.create') }}">Create Course</a>
                 </li>
 
             @endif

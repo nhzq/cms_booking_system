@@ -66,9 +66,23 @@ class TrainingController extends Controller
             'location_id' => $request->location_id
         ]);
 
+        // $training = new Training();
+        // $training->category_id = $request->category_id;
+        // $training->subcategory_id = $request->subcategory_id;
+        // $training->start_date = Carbon::parse($request->start_date);
+        // $training->end_date = Carbon::parse($request->end_date);
+        // $training->location_id = $request->location_id;
+        // $training->category_slug = str_slug($training->category->name);
+        // $training->sub_slug = str_slug($training->subcategory->name);
+        // $training->save();
+
+
         Session::flash('success', "The training has been successfully saved");
 
         return redirect()->route('systemadmin.training.index');
+
+        
+
     }
 
     /**

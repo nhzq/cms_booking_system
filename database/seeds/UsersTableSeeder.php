@@ -27,20 +27,26 @@ class UsersTableSeeder extends Seeder
         //Create details of users
         $superadmin = User::create([
             'name' => 'Super Admin',
+            'username' => 'Super Admin',
             'email' => 'superadmin@email.com',
-            'password' => bcrypt('password')
+            'password' => bcrypt('password'),
+            'mode' => 'off'
         ]);
 
         $webadmin = User::create([
             'name' => 'Web Admin',
+            'username' => 'Web Admin',
             'email' => 'webadmin@email.com',
-            'password' => bcrypt('password')
+            'password' => bcrypt('password'),
+            'mode' => 'on'
         ]);
 
         $systemadmin = User::create([
             'name' => 'System Admin',
+            'username' => 'System Admin',
             'email' => 'systemadmin@email.com',
-            'password' => bcrypt('password')
+            'password' => bcrypt('password'),
+            'mode' => 'on'
         ]);
 
         //Assign roles to the users based on the condition

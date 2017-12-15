@@ -46,16 +46,15 @@
 							</div>
 
 							<div class="col-md-12">
-								<p><span class="label label-info" style="font-size: 12px;">Subategory's Name</span></p>
+								<p><span class="label label-info" style="font-size: 12px;">Course</span></p>
 
 								@if(count($category->subcategories) > 0)
 
-									<table class="table table-bordered table-responsive">
+									<table class="table table-responsive">
 										<thead>
 											<tr>
 												<th class="col-md-10">Name</th>
 												<th class="col-md-1">Edit</th>
-												<th class="col-md-1">Delete</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -65,7 +64,6 @@
 												<tr >
 													<td>{{ $sub->name }}</td>
 													<td><a href="{{ route('systemadmin.subcategory.edit', ['id' => $sub->id]) }}" class="btn btn-warning">Edit</a></td>
-													<td><a href="" class="btn btn-danger">Delete</a></td>
 												</tr>
 
 											@endforeach

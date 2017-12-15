@@ -11,7 +11,7 @@
 
     @php
         $post = App\Homepage::first();
-        $user = \Auth::user()->name;
+        $user = \Auth::user()->username;
     @endphp
 
     @if(count($post) > 0)

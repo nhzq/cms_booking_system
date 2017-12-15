@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\SystemAdmin;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Training;
 use App\Category;
-use App\Subcategory;
-use Session;
 
-class SubcategoryController extends Controller
+class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +15,25 @@ class SubcategoryController extends Controller
      */
     public function index()
     {
-        //
+        $i = 1;
+
+        return view('event-page.event')
+            ->with('i')
+            ->with('categories', Category::all())
+            ->with('trainings', Training::orderBy('start_date', 'asc')->get());
+    }
+
+    public function category($id)
+    {
+        $i = 1;
+
+        $list = Category::find($id)->id;
+        $trainings = Training::where('category_id', $list)->get();
+
+        return view('event-page.category-post')
+            ->with('i')
+            ->with('categories', Category::all())
+            ->with('trainings', $trainings);
     }
 
     /**
@@ -27,9 +43,7 @@ class SubcategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-
-        return view('admin.systemadmin.category.create_sub')->with('categories' ,$categories);
+        //
     }
 
     /**
@@ -40,20 +54,7 @@ class SubcategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'category_id' => 'required',
-            'name' => 'required'
-        ]);
-
-        $sub = Subcategory::create([
-            'category_id' => $request->category_id,
-            'name' => $request->name,
-            'slug' => str_slug($request->name)
-        ]);
-
-        Session::flash('success', "Subcategory has been saved");
-
-        return redirect()->route('systemadmin.category.index');
+        //
     }
 
     /**

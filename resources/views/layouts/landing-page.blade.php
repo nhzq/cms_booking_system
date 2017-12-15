@@ -80,12 +80,9 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('frontend.service') }}">Our Service</a>
                     </li>
-
-                    <!-- Training Events-->
-                    {{-- <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="">Training &amp Events</a>
-                    </li> --}}
-                    <!-- /Training Events-->
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{{ route('event.index') }}">Training &amp Events</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('frontend.news') }}">News &amp Media</a>
                     </li>
