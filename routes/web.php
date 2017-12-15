@@ -76,6 +76,11 @@ Route::get('/event/category/{id}/{slug}', [
 	'as' => 'event.category',
 ]);
 
+Route::get('/event/course/{id}/{slug}', [
+	'uses' => 'EventController@course',
+	'as' => 'event.course',
+]);
+
 /*
 |---------------------------
 |---------------------------

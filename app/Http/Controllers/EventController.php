@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Training;
 use App\Category;
+use App\Subcategory;
 
 class EventController extends Controller
 {
@@ -34,6 +35,15 @@ class EventController extends Controller
             ->with('i')
             ->with('categories', Category::all())
             ->with('trainings', $trainings);
+    }
+
+    public function course($id)
+    {
+        $training = Training::find($id);
+
+        return view('event-page.course-post')
+            ->with('training', $training)
+            ->with('categories', Category::all());
     }
 
     /**

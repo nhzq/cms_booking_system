@@ -14,9 +14,8 @@
 			{{ $training->start_date->toFormattedDateString() }}
 		</td>
 		<td class="col-md-1">
-			<button type="button" class="btn btn-secondary" style="font-size: 10px; border-radius: 4px;">
-				More info
-			</button>
+			<a href="{{ route('event.course', ['id' => $training->id, 'slug' => $training->subcategory->slug]) }}" class="btn btn-secondary" style="font-size: 10px; border-radius: 4px;">More info</a>
+			
 		</td>
 	</tr>
 
