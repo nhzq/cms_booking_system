@@ -11,6 +11,7 @@ use App\Participant;
 use App\Fee;
 use Session;
 use DB;
+use PDF;
 
 class EventController extends Controller
 {
@@ -173,6 +174,25 @@ class EventController extends Controller
             ->with('i')
             ->with('event', $event)
             ->with('participants', $participants);
+    }
+
+    public function test()
+    {
+        return view('test');
+    }
+
+    public function eventPDF($id)
+    {
+        $i = 0;
+        $event = Event::find($id);
+        $participants = Participant::where('event_id', $event->id)->get();
+
+        $pdf = PDF::loadView('admin.systemadmin.pdf.event_report_pdf', compact('i', 'event', 'participants'));
+
+        $comp = str_slug($event->name);
+        $start = $event->training->start_date->format('d/m/Y');
+
+        return $pdf->download($comp . '_' . $start . '_' . 'report.pdf');
     }
 
 

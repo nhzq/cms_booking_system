@@ -37,7 +37,7 @@
 									<td>{{ $event->name }}</td>
 									<td>{{ $event->training->start_date->format('j') . ' - ' . $event->training->end_date->format('j F Y') }}</td>
 									<td><a href="{{ route('systemadmin.details', ['id' => $event->id]) }}">Details</a></td>
-									<td>download</td>
+									<td><a href="{{ route('systemadmin.event.pdf', ['id' => $event->id]) }}">Download</a></td>
 								</tr>
 
 							@endforeach

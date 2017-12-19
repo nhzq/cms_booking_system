@@ -17,10 +17,10 @@
 |---------------------------
 */
 
-// Route::get('/test/create', [
-// 	'uses' => 'TestController@create',
-// 	'as' => 'test.create'
-// ]);
+Route::get('/test', [
+	'uses' => 'EventController@test',
+	'as' => 'test'
+]);
 
 
 /*
@@ -433,6 +433,13 @@ Route::group(['prefix' => 'systemadmin', 'middleware' => 'auth'], function() {
 	Route::get('/booked/details/{id}', [
 		'uses' => 'EventController@details',
 		'as' => 'systemadmin.details',
+		'middleware' => 'roles',
+		'roles' => ['System Admin']
+	]);
+
+	Route::get('/booked/event/download/{id}', [
+		'uses' => 'EventController@eventPDF',
+		'as' => 'systemadmin.event.pdf',
 		'middleware' => 'roles',
 		'roles' => ['System Admin']
 	]);
