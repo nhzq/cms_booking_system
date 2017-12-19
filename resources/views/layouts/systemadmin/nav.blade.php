@@ -7,6 +7,9 @@
         <a href="{{ route('systemadmin.index') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard: System Admin</a>
     </li>
     <li>
+        <a href="{{ route('systemadmin.booked') }}"><i class="fa fa-wrench fa-fw"></i> Booked</a>
+    </li>
+    <li>
         <a href="#"><i class="fa fa-wrench fa-fw"></i> Training<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
             <li>

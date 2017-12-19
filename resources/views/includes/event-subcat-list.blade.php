@@ -1,3 +1,14 @@
+<style>
+	
+	.btn-style	{
+		font-size: 10px; 
+		border-radius: 4px;
+	}
+
+
+
+</style>
+
 @forelse($trainings as $training)
 
 	<tr>
@@ -14,7 +25,7 @@
 			{{ $training->start_date->toFormattedDateString() }}
 		</td>
 		<td class="col-md-1">
-			<a href="{{ route('event.course', ['id' => $training->id, 'slug' => $training->subcategory->slug]) }}" class="btn btn-secondary" style="font-size: 10px; border-radius: 4px;">More info</a>
+			<a href="{{ route('event.course', ['id' => $training->id, 'slug' => $training->subcategory->slug]) }}" class="btn btn-secondary btn-style">More info</a>
 			
 		</td>
 	</tr>

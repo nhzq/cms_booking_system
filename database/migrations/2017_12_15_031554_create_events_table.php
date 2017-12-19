@@ -15,7 +15,19 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->text('address');
+            $table->string('reg_no');
+            $table->string('phone');
+            $table->string('email')->nullable();
+            $table->string('website')->nullable();
+            $table->string('person');
+            $table->string('position');
+            $table->integer('training_id')->unsigned();
+            $table->integer('status')->unsigned();
             $table->timestamps();
+
+            $table->foreign('training_id')->references('id')->on('trainings');
         });
     }
 

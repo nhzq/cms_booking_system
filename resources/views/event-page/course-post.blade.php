@@ -8,6 +8,11 @@
 				font-size: 14px;
 			}
 
+			.btn-style	{
+				font-size: 13px; 
+				border-radius: 4px;
+			}
+
 		</style>
 
 	@endsection
@@ -53,11 +58,15 @@
 									</tr>
 									<tr>
 										<th>Fee</th>
-										<td></td>
+										<td>{{ "RM" . $training->fee }}</td>
 									</tr>
 								</tbody>
 							</table>
 
+						</div>
+						
+						<div class="text-center">
+							<a href="{{ route('event.register.company', ['id' => $training->id]) }}" class="btn btn-success btn-style">Register</a>
 						</div>
 						
 					</div>

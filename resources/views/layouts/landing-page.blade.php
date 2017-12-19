@@ -123,6 +123,8 @@
     <!-- Custom scripts for this template -->
     <script src="{{ asset('js/creative.min.js') }}"></script>
 
+    @yield('script')
+
   </body>
 
 </html>

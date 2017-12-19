@@ -12,7 +12,8 @@ class Training extends Model
     	'subcategory_id',
     	'location_id',
     	'start_date',
-        'end_date'
+        'end_date',
+        'fee'
     ];
 
     public function category()
@@ -28,6 +29,11 @@ class Training extends Model
     public function location()
     {
     	return $this->belongsTo('App\Location');
+    }
+
+    public function event()
+    {
+        return $this->hasOne('App\Event');
     }
 
 }

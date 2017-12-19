@@ -63,7 +63,7 @@ class AboutController extends Controller
 
         Session::flash('success', "You have successfully saved the details");
 
-        return redirect()->route('webadmin.about.index');
+        return redirect()->back();
     }
 
     /**

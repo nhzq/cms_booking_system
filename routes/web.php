@@ -73,12 +73,42 @@ Route::get('/event', [
 
 Route::get('/event/category/{id}/{slug}', [
 	'uses' => 'EventController@category',
-	'as' => 'event.category',
+	'as' => 'event.category'
 ]);
 
 Route::get('/event/course/{id}/{slug}', [
 	'uses' => 'EventController@course',
-	'as' => 'event.course',
+	'as' => 'event.course'
+]);
+
+Route::get('/event/register/company/{id}', [
+	'uses' => 'EventController@company',
+	'as' => 'event.register.company'
+]);
+
+Route::post('/event/register/company/store/{id}', [
+	'uses' => 'EventController@storeCompany',
+	'as' => 'event.register.store.company'
+]);
+
+Route::get('/event/register/people/{id}', [
+	'uses' => 'EventController@people',
+	'as' => 'event.register.people'
+]);
+
+Route::post('/event/register/people/store/{id}', [
+	'uses' => 'EventController@storePeople',
+	'as' => 'event.register.store.people'
+]);
+
+Route::get('/event/register/confirm/{id}', [
+	'uses' => 'EventController@confirm',
+	'as' => 'event.register.confirm'
+]);
+
+Route::post('/event/register/confirm/store/{id}', [
+	'uses' => 'EventController@storeConfirm',
+	'as' => 'event.register.store.confirm'
 ]);
 
 /*
@@ -385,9 +415,27 @@ Route::group(['prefix' => 'systemadmin', 'middleware' => 'auth'], function() {
 		'as' => 'systemadmin.index',
 		'middleware' => 'roles',
 		'roles' => ['System Admin']
-		
 	]);
 
+	/*
+	|---------------------------
+	| Booked features
+	|---------------------------
+	*/
+
+	Route::get('/booked', [
+		'uses' => 'EventController@booked',
+		'as' => 'systemadmin.booked',
+		'middleware' => 'roles',
+		'roles' => ['System Admin']
+	]);
+
+	Route::get('/booked/details/{id}', [
+		'uses' => 'EventController@details',
+		'as' => 'systemadmin.details',
+		'middleware' => 'roles',
+		'roles' => ['System Admin']
+	]);
 
 	/*
 	|---------------------------

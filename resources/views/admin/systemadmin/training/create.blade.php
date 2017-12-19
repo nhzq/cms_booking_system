@@ -71,7 +71,7 @@
 								@endif
 
 				    		</div>
-							<div class="col-md-6" style="padding-left: 0px;">
+							<div class="col-md-4" style="padding-left: 0px;">
 					    		<div class="form-group {{ $errors->has('start_date') ? 'has-error' : '' }}">
 					    			<label for="start date">Please choose start date</label>
 					    			<input id="datepicker" name="start_date">
@@ -86,7 +86,7 @@
 
 					    		</div>
 							</div>		
-					    	<div class="col-md-6" style="padding-right: 0px;">
+					    	<div class="col-md-4">
 					    		<div class="form-group {{ $errors->has('end_date') ? 'has-error' : '' }}">
 					    			<label for="end date">Please choose end date</label>
 					    			<input id="datepicker2" name="end_date">
@@ -95,6 +95,25 @@
 
 						    			<div class="text-danger">
 											Please choose training's end date before save
+										</div>
+
+									@endif
+
+					    		</div>
+							</div>
+
+							<div class="col-md-4" style="padding-right: 0px;">
+								<div class="form-group {{ $errors->has('fee') ? 'has-error' : '' }}">
+					    			<label for="fee">Fee</label>
+					    			<div class="input-group">
+					    				<span class="input-group-addon" id="basic-addon1">RM</span>
+					    				<input type="text" class="form-control" name="fee" aria-describedby="basic-addon1">
+					    			</div>
+
+					    			@if($errors->has('fee'))
+
+						    			<div class="text-danger">
+											Please enter training fee before save
 										</div>
 
 									@endif

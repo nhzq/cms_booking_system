@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Training;
 use App\Category;
 use App\Subcategory;
+use App\Event;
+use App\Participant;
+use App\Fee;
+use Session;
+use DB;
 
 class EventController extends Controller
 {
@@ -46,6 +51,131 @@ class EventController extends Controller
             ->with('categories', Category::all());
     }
 
+    public function company($id)
+    {
+        $training = Training::find($id);
+
+         return view('event-page.register-company')
+            ->with('training', $training)
+            ->with('categories', Category::all());
+    }
+
+    public function storeCompany(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required', 
+            'address' => 'required', 
+            'reg_no' => 'required', 
+            'phone' => 'required',
+            'email' => 'required|email', 
+            'person' => 'required', 
+            'position' => 'required'
+        ]);
+
+        $cat_id = Training::find($id)->id;
+
+        $event = Event::updateOrCreate([
+            'name' => $request->name, 
+            'address' => $request->address, 
+            'reg_no' => $request->reg_no, 
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'website' => $request->website, 
+            'person' => $request->person, 
+            'position' => $request->position,
+            'training_id' => $cat_id,
+            'status' => 0
+        ]);
+
+        return redirect()->route('event.register.people', ['id' => $event->id]);
+    }
+
+    public function people($id)
+    {
+        $event = Event::find($id);
+
+        return view('event-page.register-people')->with('event', $event);
+    }
+
+    public function storePeople(Request $request, $id)
+    {
+        $event = Event::find($id);
+
+        $count = count($request->input('name'));
+        $participant = new Participant();
+
+        for($i=0; $i < $count; $i++) {
+            $data[] = array(
+                'event_id' => $event->id,
+                'name' => $request->name[$i]
+            );
+        }
+
+        DB::table('participants')->insert($data);
+
+        return redirect()->route('event.register.confirm', ['id'=> $event->id]);
+    }
+
+    public function confirm($id)
+    {
+        $event = Event::find($id);
+
+        $participants = count($event->participants);
+        $fee = $event->training->fee;
+        $total = $participants * $fee;
+
+        return view('event-page.register-fee-confirm')
+            ->with('event', $event)
+            ->with('total', $total);
+    }
+
+    public function storeConfirm(Request $require, $id)
+    {
+        $event = Event::find($id);
+
+        //Total fee
+        $participants = count($event->participants);
+        $fee = $event->training->fee;
+        $total = $participants * $fee;
+
+        $fee = new Fee();
+        $fee->event_id = $event->id;
+        $fee->total = $total;
+        $fee->save();
+
+        $event->status = 1;
+        $event->save();
+
+        return redirect()->back();
+    }
+
+    public function booked()
+    {
+        $i = 1;
+        $events = Event::where('status', 1)->get();
+
+        $events->load(['training' => function($query) {
+            $query->orderBy('start_date', 'asc');
+        }]);
+
+        return view('admin.systemadmin.booked.index')
+            ->with('i')
+            ->with('events', $events);
+    }
+
+    public function details($id)
+    {
+        $i = 1;
+        $event = Event::find($id);
+        $participants = Participant::where('event_id', $event->id)->get();
+
+        return view('admin.systemadmin.booked.details')
+            ->with('i')
+            ->with('event', $event)
+            ->with('participants', $participants);
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -62,10 +192,11 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         //
     }
+
 
     /**
      * Display the specified resource.

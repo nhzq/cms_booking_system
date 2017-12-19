@@ -55,6 +55,7 @@ class TrainingController extends Controller
             'subcategory_id' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
+            'fee' => 'required|numeric',
             'location_id' => 'required'
         ]);
 
@@ -63,6 +64,7 @@ class TrainingController extends Controller
             'subcategory_id' => $request->subcategory_id,
             'start_date' => Carbon::parse($request->start_date),
             'end_date' => Carbon::parse($request->end_date),
+            'fee' => $request->fee,
             'location_id' => $request->location_id
         ]);
 
@@ -126,6 +128,7 @@ class TrainingController extends Controller
             'subcategory_id' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
+            'fee' => 'required|numeric',
             'location_id' => 'required'
         ]);
 
@@ -134,6 +137,7 @@ class TrainingController extends Controller
         $training->subcategory_id = $request->subcategory_id;
         $training->start_date = Carbon::parse($request->start_date);
         $training->end_date = Carbon::parse($request->end_date);
+        $training->fee = $request->fee;
         $training->location_id = $request->location_id;
         $training->save();
 
