@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
+use Session;
 
 class UserController extends Controller
 {
@@ -111,8 +112,7 @@ class UserController extends Controller
         $this->validate($request, [
             'username' => 'required',
             'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:6'
+            'email' => 'required|email'
         ]);
 
         $user = User::find($id);
@@ -130,7 +130,6 @@ class UserController extends Controller
         $user->username = $request->username;
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = bcrypt($request->password);
         $user->save();
 
         return redirect()->route('superadmin.user.index');
@@ -145,6 +144,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+
+        Session::flash('success', "User has been deleted");
+
+        return redirect()->route('superadmin.user.index');
     }
 }

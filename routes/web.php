@@ -17,10 +17,10 @@
 |---------------------------
 */
 
-Route::get('/test', [
-	'uses' => 'EventController@test',
-	'as' => 'test'
-]);
+// Route::get('/test', [
+// 	'uses' => 'EventController@test',
+// 	'as' => 'test'
+// ]);
 
 
 /*
@@ -186,6 +186,13 @@ Route::group(['prefix' => 'superadmin', 'middleware' => 'auth'], function() {
 	Route::post('/user/update/{id}', [
 		'uses' => 'SuperAdmin\UserController@update',
 		'as' => 'superadmin.user.update',
+		'middleware' => 'roles',
+		'roles' => ['Super Admin']
+	]);
+
+	Route::get('/user/delete/{id}', [
+		'uses' => 'SuperAdmin\UserController@destroy',
+		'as' => 'superadmin.user.delete',
 		'middleware' => 'roles',
 		'roles' => ['Super Admin']
 	]);

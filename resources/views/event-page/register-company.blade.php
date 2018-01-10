@@ -13,6 +13,37 @@
 				border-radius: 4px;
 			}
 
+			.has-error .help-block,
+			.has-error .control-label,
+			.has-error .radio,
+			.has-error .checkbox,
+			.has-error .radio-inline,
+			.has-error .checkbox-inline,
+			.has-error.radio label,
+			.has-error.checkbox label,
+			.has-error.radio-inline label,
+			.has-error.checkbox-inline label {
+			  color: #a94442;
+			}
+			.has-error .form-control {
+			  border-color: #a94442;
+			  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+			          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+			}
+			.has-error .form-control:focus {
+			  border-color: #843534;
+			  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+			          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+			}
+			.has-error .input-group-addon {
+			  color: #a94442;
+			  background-color: #f2dede;
+			  border-color: #a94442;
+			}
+			.has-error .form-control-feedback {
+			  color: #a94442;
+			}
+
 
 		</style>
 
@@ -63,47 +94,110 @@
 								<div class="card-body">
 									<div class="row">
 										<div class="col-md-6">
-											<div class="form-group">
+											<div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
 							                    <label class="control-label">Name</label>
-							                    <input  maxlength="100" name="name" type="text" class="form-control" placeholder="Enter company's name"  />
+							                    <input  maxlength="100" name="name" type="text" class="form-control" placeholder="Enter company's name"  value="{{ old('name') }}"/>
+
+							                    @if($errors->has('name'))
+
+									    			<div class="text-danger">
+														Please enter company's name before save
+													</div>
+
+												@endif
+
 							                </div>
 
-							                <div class="form-group">
+							                <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
 							                    <label class="control-label">Address</label>
-							                    <input maxlength="100" name="address" type="text" class="form-control" placeholder="Enter company's address" />
+							                    <input maxlength="100" name="address" type="text" class="form-control" placeholder="Enter company's address" / value="{{ old('address') }}">
+
+							                    @if($errors->has('address'))
+
+									    			<div class="text-danger">
+														Please enter company's address before save
+													</div>
+
+												@endif
+
 							                </div>
 
-							                <div class="form-group">
+							                <div class="form-group {{ $errors->has('reg_no') ? 'has-error' : '' }}">
 							                    <label class="control-label">Registration Number</label>
-							                    <input maxlength="100" name="reg_no" type="text" class="form-control" placeholder="Enter company's registration number" />
+							                    <input maxlength="100" name="reg_no" type="text" class="form-control" placeholder="Enter company's registration number" value="{{ old('reg_no') }}"/>
+
+							                    @if($errors->has('reg_no'))
+
+									    			<div class="text-danger">
+														Please enter company's registration number before save
+													</div>
+
+												@endif
+
 							                </div>
 											
-											<div class="form-group">
+											<div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
 							                    <label class="control-label">Phone Number</label>
-							                    <input maxlength="100" name="phone" type="text" class="form-control" placeholder="Enter company's phonenumber" />
+							                    <input maxlength="100" name="phone" type="text" class="form-control" placeholder="Enter company's phonenumber" value="{{ old('phone') }}"/>
+
+							                     @if($errors->has('phone'))
+
+									    			<div class="text-danger">
+														Please enter phone number before save
+													</div>
+
+												@endif
+
 							                </div>
 
-							                <div class="form-group">
+							                <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
 							                    <label class="control-label">Email</label>
-							                    <input maxlength="100" name="email" type="text" class="form-control" placeholder="Enter company's email" />
+							                    <input maxlength="100" name="email" type="text" class="form-control" placeholder="Enter company's email" value="{{ old('email') }}"/>
+
+							                    @if($errors->has('email'))
+
+									    			<div class="text-danger">
+														Please enter email before save
+													</div>
+
+												@endif
+
 							                </div>
 
-							                <div class="form-group">
+							                <div class="form-group ">
 							                    <label class="control-label">Website</label>
-							                    <input maxlength="100" name="website" type="text" class="form-control" placeholder="Enter company's website" />
+							                    <input maxlength="100" name="website" type="text" class="form-control" placeholder="Enter company's website" value="{{ old('website') }}"/>
 							                </div>
 
 						                </div>
 
 						                <div class="col-md-6">
-											<div class="form-group">
+											<div class="form-group {{ $errors->has('person') ? 'has-error' : '' }}">
 							                    <label class="control-label">Person In Charge</label>
-							                    <input maxlength="100" name="person" type="text" class="form-control" placeholder="Enter name" />
+							                    <input maxlength="100" name="person" type="text" class="form-control" placeholder="Enter name" value="{{ old('person') }}"/>
+
+							                    @if($errors->has('person'))
+
+									    			<div class="text-danger">
+														Please enter the name of person in charge before save
+													</div>
+
+												@endif
+
 							                </div>
 
-							                <div class="form-group">
+							                <div class="form-group {{ $errors->has('position') ? 'has-error' : '' }}">
 							                    <label class="control-label">Position</label>
-							                    <input maxlength="100" name="position" type="text" class="form-control" placeholder="Enter position" />
+							                    <input maxlength="100" name="position" type="text" class="form-control" placeholder="Enter position" value="{{ old('position') }}"/>
+
+							                    @if($errors->has('position'))
+
+									    			<div class="text-danger">
+														Please enter the position before save
+													</div>
+
+												@endif
+
 							                </div>
 							                
 						                </div>
@@ -116,7 +210,7 @@
 							
 							<div class="" style="margin-top: 30px !important;">
 								<button class="btn btn-success btn-style pull-right" type="submit">
-									Submit
+									Save
 								</button>
 							</div>
 

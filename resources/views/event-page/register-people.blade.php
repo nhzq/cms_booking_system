@@ -47,15 +47,16 @@
 					</div>
 				</div>
 
-				<div class="col-md-10 offset-1">
+				<br>
+				<br>
 
-					<h3>Registration Form</h3>
+				<div class="col-md-10 offset-1">
 
 					<form action="{{ route('event.register.store.people', ['id' => $event->id]) }}" method="post">
 						{{ csrf_field() }}
 						
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">
 										Participants
@@ -100,7 +101,7 @@
 						</div>
 						<div class="" style="margin-top: 30px !important;">
 							<button class="btn btn-success btn-style pull-right" type="submit">
-								Submit
+								Save
 							</button>
 						</div>
 

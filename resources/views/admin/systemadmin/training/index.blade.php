@@ -41,7 +41,6 @@
 											<th>Fee</th>
 											<th>Venue</th>
 											<th>Edit</th>
-											<th>Delete</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -57,7 +56,6 @@
 												<td>{{ 'RM' . $event->fee }}</td>
 												<td>{{ $event->location->name }}</td>
 												<td><a href="{{ route('systemadmin.training.edit', ['id' => $event->id]) }}" class="btn btn-warning">Edit</a></td>
-												<td><a href="" class="btn btn-danger">Delete</a></td>
 											</tr>
 
 										@endforeach

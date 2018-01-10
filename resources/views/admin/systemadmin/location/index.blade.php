@@ -29,7 +29,6 @@
 										<th class="col-md-1">No</th>
 										<th class="col-md-9">Location's Name</th>
 										<th class="col-md-1">Edit</th>
-										<th class="col-md-1">Delete</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -40,7 +39,6 @@
 											<td>{{ ++$i }}</td>
 											<td>{{ $location->name }}</td>
 											<td><a href="{{ route('systemadmin.location.edit', ['id' => $location->id]) }}" class="btn btn-warning">Edit</a></td>
-											<td><a href="" class="btn btn-danger">Delete</a></td>
 										</tr>
 
 									@endforeach

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class SuperAdminController extends Controller
 {
@@ -14,7 +15,9 @@ class SuperAdminController extends Controller
      */
     public function index()
     {
-        return view('admin.superadmin.index');
+        $users = User::where('mode', 'on')->get();
+
+        return view('admin.superadmin.index')->with('users', $users);
     }
 
     /**

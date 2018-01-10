@@ -31,14 +31,12 @@
 										<tr>
 											<th class="col-md-10">Item</th>
 											<th class="col-md-1">Edit</th>
-											<th class="col-md-1">Delete</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
 											<td>{{ $category->name }}</td>
 											<td><a href="{{ route('systemadmin.category.edit', ['id' => $category->id]) }}" class="btn btn-warning">Edit</a></td>
-											<td><a href="" class="btn btn-danger">Delete</a></td>
 										</tr>
 									</tbody>
 								</table>

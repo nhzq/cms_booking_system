@@ -12,6 +12,7 @@ use App\Fee;
 use Session;
 use DB;
 use PDF;
+use Carbon\Carbon;
 
 class EventController extends Controller
 {
@@ -27,7 +28,7 @@ class EventController extends Controller
         return view('event-page.event')
             ->with('i')
             ->with('categories', Category::all())
-            ->with('trainings', Training::orderBy('start_date', 'asc')->get());
+            ->with('trainings', Training::orderBy('start_date', 'asc')->where('start_date', '>=', Carbon::now())->get());
     }
 
     public function category($id)
@@ -147,17 +148,18 @@ class EventController extends Controller
         $event->status = 1;
         $event->save();
 
-        return redirect()->back();
+        Session::flash('success', "You have successfully submit the form");
+
+        return redirect()->route('event.index');
     }
 
     public function booked()
     {
         $i = 1;
-        $events = Event::where('status', 1)->get();
 
-        $events->load(['training' => function($query) {
-            $query->orderBy('start_date', 'asc');
-        }]);
+        $events = Event::where('status', 1)->whereHas('training', function($query) {
+            $query->where('start_date', '>', Carbon::now())->orderBy('start_date', 'asc');
+        })->get();
 
         return view('admin.systemadmin.booked.index')
             ->with('i')

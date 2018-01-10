@@ -4,6 +4,9 @@ namespace App\Http\Controllers\SystemAdmin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Event;
+use App\Training;
+use Carbon\Carbon;
 
 class SystemAdminController extends Controller
 {
@@ -14,7 +17,17 @@ class SystemAdminController extends Controller
      */
     public function index()
     {
-        return view('admin.systemadmin.index');
+        $events = Event::where('status', 1)->whereHas('training', function($query) {
+            $query->where('start_date', '>', Carbon::now())->orderBy('start_date', 'asc');
+        })->get();
+
+        $training = Training::where('start_date', '>', Carbon::now())->orderBy('start_date', 'asc')->get();
+
+
+
+        return view('admin.systemadmin.index')
+            ->with('training', $training)
+            ->with('events', $events);
     }
 
     /**

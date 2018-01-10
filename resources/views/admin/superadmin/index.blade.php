@@ -24,12 +24,12 @@
 	                            <i class="fa fa-comments fa-5x"></i>
 	                        </div>
 	                        <div class="col-xs-9 text-right">
-	                            <div class="huge"></div>
-	                            <div>Total Post(News &amp Media)</div>
+	                            <div class="huge">{{ $users->count() }}</div>
+	                            <div>Total User</div>
 	                        </div>
 	                    </div>
 	                </div>
-	                <a href="#">
+	                <a href="{{ route('superadmin.user.index') }}">
 	                    <div class="panel-footer">
 	                        <span class="pull-left">View Details</span>
 	                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

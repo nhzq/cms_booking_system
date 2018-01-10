@@ -46,6 +46,9 @@
 					</div>
 				</div>
 
+				<br>
+				<br>
+
 				<div class="col-md-10 offset-1">
 
 					<form action="{{ route('event.register.store.confirm', ['id' => $event->id]) }}" method="post">

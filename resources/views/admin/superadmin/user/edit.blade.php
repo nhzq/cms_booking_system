@@ -54,12 +54,6 @@
 									<label for="email">Email</label>
 									<input type="text" name="email" class="form-control" value="{{ $user->email }}">
 								</div>
-
-								<div class="form-group">
-									<label for="password">Password</label>
-									<input style="display:none">
-									<input type="password" name="password" class="form-control">
-								</div>
 							</div>
 
 							<div class="col-md-12" style="margin-bottom: 30px !important;">

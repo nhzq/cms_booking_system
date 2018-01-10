@@ -19,7 +19,7 @@ class TrainingController extends Controller
      */
     public function index()
     {
-        $training = Training::all();
+        $training = Training::where('start_date', '>', Carbon::now())->orderBy('start_date', 'asc')->get();
         $i = 1;
 
         return view('admin.systemadmin.training.index')

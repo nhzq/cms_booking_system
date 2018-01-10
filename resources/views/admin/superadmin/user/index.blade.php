@@ -45,7 +45,7 @@
 											<td>{{ $user->name }}</td>
 											<td>{{ $user->email }}</td>
 											<td><a href="{{ route('superadmin.user.edit', ['id' => $user->id]) }}" class="btn btn-warning">Edit</a></td>
-											<td><a href="" class="btn btn-danger">Delete</a></td>
+											<td><a href="{{ route('superadmin.user.delete', ['id' => $user->id]) }}" class="btn btn-danger">Delete</a></td>
 										</tr>
 
 									@endforeach

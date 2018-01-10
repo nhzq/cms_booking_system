@@ -29,7 +29,7 @@
 						</thead>
 						<tbody>
 
-							@foreach($events as $event)
+							@forelse($events as $event)
 
 								<tr>
 									<td>{{ ++$i }}</td>
@@ -39,8 +39,11 @@
 									<td><a href="{{ route('systemadmin.details', ['id' => $event->id]) }}">Details</a></td>
 									<td><a href="{{ route('systemadmin.event.pdf', ['id' => $event->id]) }}">Download</a></td>
 								</tr>
+							@empty
 
-							@endforeach
+								none
+
+							@endforelse
 
 						</tbody>
 
