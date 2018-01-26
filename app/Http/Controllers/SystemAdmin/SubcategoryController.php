@@ -47,7 +47,8 @@ class SubcategoryController extends Controller
 
         $sub = Subcategory::create([
             'category_id' => $request->category_id,
-            'name' => $request->name
+            'name' => $request->name,
+            'slug' => str_slug($request->name)
         ]);
 
         Session::flash('success', "Subcategory has been saved");
